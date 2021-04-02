@@ -6,6 +6,7 @@ import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_rename_items.*
 import kotlinx.android.synthetic.main.dialog_rename_items.view.*
+import java.io.File
 import java.util.*
 
 class RenameItemsDialog(val activity: BaseSimpleActivity, val paths: ArrayList<String>, val callback: () -> Unit) {
@@ -24,7 +25,7 @@ class RenameItemsDialog(val activity: BaseSimpleActivity, val paths: ArrayList<S
                                 return@setOnClickListener
                             }
 
-                            val valueToAdd = view.rename_items_value.text.toString()
+                            val valueToAdd = view.rename_items_value.value
                             val append = view.rename_items_radio_group.checkedRadioButtonId == rename_items_radio_append.id
 
                             if (valueToAdd.isEmpty()) {
@@ -38,7 +39,7 @@ class RenameItemsDialog(val activity: BaseSimpleActivity, val paths: ArrayList<S
                                 return@setOnClickListener
                             }
 
-                            val validPaths = paths.filter { activity.getDoesFilePathExist(it) }
+                            val validPaths = paths.filter { File(it).exists() }
                             val sdFilePath = validPaths.firstOrNull { activity.isPathOnSD(it) } ?: validPaths.firstOrNull()
                             if (sdFilePath == null) {
                                 activity.toast(R.string.unknown_error_occurred)
@@ -47,10 +48,6 @@ class RenameItemsDialog(val activity: BaseSimpleActivity, val paths: ArrayList<S
                             }
 
                             activity.handleSAFDialog(sdFilePath) {
-                                if (!it) {
-                                    return@handleSAFDialog
-                                }
-
                                 ignoreClicks = true
                                 var pathsCnt = validPaths.size
                                 for (path in validPaths) {
@@ -71,7 +68,7 @@ class RenameItemsDialog(val activity: BaseSimpleActivity, val paths: ArrayList<S
 
                                     val newPath = "${path.getParentPath()}/$newName"
 
-                                    if (activity.getDoesFilePathExist(newPath)) {
+                                    if (File(newPath).exists()) {
                                         continue
                                     }
 

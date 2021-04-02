@@ -23,7 +23,6 @@ class SharedThemeReceiver : BroadcastReceiver() {
                             textColor = it.textColor
                             backgroundColor = it.backgroundColor
                             primaryColor = it.primaryColor
-                            accentColor = it.accentColor
                             appIconColor = it.appIconColor
                             navigationBarColor = it.navigationBarColor
                             checkAppIconColorChanged(oldColor, appIconColor, context)
@@ -37,7 +36,6 @@ class SharedThemeReceiver : BroadcastReceiver() {
                             textColor = it.textColor
                             backgroundColor = it.backgroundColor
                             primaryColor = it.primaryColor
-                            accentColor = it.accentColor
                             appIconColor = it.appIconColor
                             navigationBarColor = it.navigationBarColor
                             checkAppIconColorChanged(oldColor, appIconColor, context)

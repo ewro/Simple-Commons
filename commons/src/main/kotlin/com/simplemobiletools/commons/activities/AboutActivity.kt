@@ -1,5 +1,6 @@
 package com.simplemobiletools.commons.activities
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -8,9 +9,7 @@ import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.View
 import com.simplemobiletools.commons.R
-import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
-import com.simplemobiletools.commons.dialogs.RateStarsDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.FAQItem
@@ -67,7 +66,7 @@ class AboutActivity : BaseSimpleActivity() {
         val deviceOS = String.format(getString(R.string.device_os), Build.VERSION.RELEASE)
         val newline = "%0D%0A"
         val separator = "------------------------------"
-        val body = "$appVersion$newline$deviceOS$newline$separator$newline$newline"
+        val body = "$appVersion$newline$deviceOS$newline$separator$newline$newline$newline"
         val href = "$label<br><a href=\"mailto:$email?subject=$appName&body=$body\">$email</a>"
         about_email.text = Html.fromHtml(href)
 
@@ -76,8 +75,7 @@ class AboutActivity : BaseSimpleActivity() {
                 baseConfig.wasBeforeAskingShown = true
                 about_email.movementMethod = LinkMovementMethod.getInstance()
                 about_email.setOnClickListener(null)
-                val msg = "${getString(R.string.before_asking_question_read_faq)}\n\n${getString(R.string.make_sure_latest)}"
-                ConfirmationDialog(this, msg, 0, R.string.read_faq, R.string.skip) {
+                ConfirmationDialog(this, "", R.string.before_asking_question_read_faq, R.string.read_it, R.string.skip) {
                     about_faq_label.performClick()
                 }
             }
@@ -143,26 +141,14 @@ class AboutActivity : BaseSimpleActivity() {
     }
 
     private fun setupRateUs() {
-        if (baseConfig.appRunCount < 5) {
+        if (baseConfig.appRunCount < 10) {
             about_rate_us.visibility = View.GONE
         } else {
             about_rate_us.setOnClickListener {
-                if (baseConfig.wasBeforeRateShown) {
-                    if (baseConfig.wasAppRated) {
-                        redirectToRateUs()
-                    } else {
-                        RateStarsDialog(this)
-                    }
-                } else {
-                    baseConfig.wasBeforeRateShown = true
-                    val msg = "${getString(R.string.before_rate_read_faq)}\n\n${getString(R.string.make_sure_latest)}"
-                    ConfirmationAdvancedDialog(this, msg, 0, R.string.read_faq, R.string.skip) {
-                        if (it) {
-                            about_faq_label.performClick()
-                        } else {
-                            about_rate_us.performClick()
-                        }
-                    }
+                try {
+                    launchViewIntent("market://details?id=${packageName.removeSuffix(".debug")}")
+                } catch (ignored: ActivityNotFoundException) {
+                    launchViewIntent(getStoreUrl())
                 }
             }
         }
@@ -201,11 +187,7 @@ class AboutActivity : BaseSimpleActivity() {
     }
 
     private fun setupCopyright() {
-        var versionName = intent.getStringExtra(APP_VERSION_NAME) ?: ""
-        if (baseConfig.appId.removeSuffix(".debug").endsWith(".pro")) {
-            versionName += " ${getString(R.string.pro)}"
-        }
-
+        val versionName = intent.getStringExtra(APP_VERSION_NAME) ?: ""
         val year = Calendar.getInstance().get(Calendar.YEAR)
         about_copyright.text = String.format(getString(R.string.copyright), versionName, year)
     }

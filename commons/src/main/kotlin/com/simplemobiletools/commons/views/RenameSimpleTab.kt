@@ -8,6 +8,7 @@ import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.interfaces.RenameTab
 import kotlinx.android.synthetic.main.tab_rename_simple.view.*
+import java.io.File
 
 class RenameSimpleTab(context: Context, attrs: AttributeSet) : RelativeLayout(context, attrs), RenameTab {
     var ignoreClicks = false
@@ -24,8 +25,8 @@ class RenameSimpleTab(context: Context, attrs: AttributeSet) : RelativeLayout(co
         this.paths = paths
     }
 
-    override fun dialogConfirmed(useMediaFileExtension: Boolean, callback: (success: Boolean) -> Unit) {
-        val valueToAdd = rename_simple_value.text.toString()
+    override fun dialogConfirmed(callback: (success: Boolean) -> Unit) {
+        val valueToAdd = rename_simple_value.value
         val append = rename_simple_radio_group.checkedRadioButtonId == rename_simple_radio_append.id
 
         if (valueToAdd.isEmpty()) {
@@ -38,7 +39,7 @@ class RenameSimpleTab(context: Context, attrs: AttributeSet) : RelativeLayout(co
             return
         }
 
-        val validPaths = paths.filter { activity?.getDoesFilePathExist(it) == true }
+        val validPaths = paths.filter { File(it).exists() }
         val sdFilePath = validPaths.firstOrNull { activity?.isPathOnSD(it) == true } ?: validPaths.firstOrNull()
         if (sdFilePath == null) {
             activity?.toast(R.string.unknown_error_occurred)
@@ -46,10 +47,6 @@ class RenameSimpleTab(context: Context, attrs: AttributeSet) : RelativeLayout(co
         }
 
         activity?.handleSAFDialog(sdFilePath) {
-            if (!it) {
-                return@handleSAFDialog
-            }
-
             ignoreClicks = true
             var pathsCnt = validPaths.size
             for (path in validPaths) {
@@ -70,7 +67,7 @@ class RenameSimpleTab(context: Context, attrs: AttributeSet) : RelativeLayout(co
 
                 val newPath = "${path.getParentPath()}/$newName"
 
-                if (activity?.getDoesFilePathExist(newPath) == true) {
+                if (File(newPath).exists()) {
                     continue
                 }
 

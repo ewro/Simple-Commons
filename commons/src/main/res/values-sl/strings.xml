@@ -10,10 +10,7 @@
     <string name="edit_with">Uredi z</string>
     <string name="no_app_found">Ni veljavne aplikacije</string>
     <string name="set_as">Nastavi kot</string>
-    <string name="copy_to_clipboard">Copy to clipboard</string>
-    <string name="copy_number_to_clipboard">Copy number to clipboard</string>
     <string name="value_copied_to_clipboard">Vrednost kopirana v odložišče</string>
-    <string name="dial_number">Dial number</string>
     <string name="unknown">Neznano</string>
     <string name="always">Vedno</string>
     <string name="never">Nikoli</string>
@@ -28,34 +25,6 @@
     <string name="download">Shrani lokalno</string>
     <string name="notification">Obvestilo</string>
     <string name="email">Email</string>
-    <string name="previous">Previous</string>
-    <string name="playpause">Play / Pause</string>
-    <string name="next">Next</string>
-    <string name="number">Number</string>
-    <string name="no_contacts_found">No contacts found</string>
-    <string name="request_the_required_permissions">Request the required permissions</string>
-    <string name="no_access_to_contacts">The app could not access your contacts</string>
-    <string name="insert_text_here">Insert text here</string>
-
-    <!-- View types -->
-    <string name="change_view_type">Spremeni tip pogleda</string>
-    <string name="grid">Mreža</string>
-    <string name="list">Seznam</string>
-    <string name="increase_column_count">Povečaj število stolpcev</string>
-    <string name="reduce_column_count">Zmanjšaj število stolpcev</string>
-    <string name="change_cover_image">Spremeni naslovno fotografijo</string>
-    <string name="select_photo">Izberi fotografijo</string>
-
-    <!-- Blocked numbers -->
-    <string name="manage_blocked_numbers">Manage blocked numbers</string>
-    <string name="not_blocking_anyone">You are not blocking anyone.</string>
-    <string name="add_a_blocked_number">Add a blocked number</string>
-    <string name="block_number">Block number</string>
-    <string name="block_numbers">Block numbers</string>
-    <string name="blocked_numbers">Blocked numbers</string>
-    <string name="must_make_default_dialer">You have to make this app the default dialer app to make use of blocked numbers.</string>
-    <string name="set_as_default">Set as default</string>
-    <string name="block_confirmation">Are you sure you want to block \"%s\"?</string>
 
     <!-- Favorites -->
     <string name="favorites">Priljubljeno</string>
@@ -98,7 +67,7 @@
     <string name="simple_renaming">Simple renaming</string>
     <string name="pattern_renaming">Pattern</string>
     <string name="string_to_add">String to add</string>
-    <string name="rename_date_time_pattern">%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second\n%i - number increasing from 1</string>
+    <string name="rename_date_time_pattern">%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
 
     <!-- Copy / Move -->
     <string name="copy">Kopiraj</string>
@@ -179,12 +148,6 @@
         <item quantity="other">Brisanje %d elementov</item>
     </plurals>
 
-    <!-- Are you sure you want to delete 5 contacts? -->
-    <plurals name="delete_contacts">
-        <item quantity="one">%d contact</item>
-        <item quantity="other">%d contacts</item>
-    </plurals>
-
     <!-- Storages -->
     <string name="select_storage">Izberite</string>
     <string name="internal">Notranja shramba</string>
@@ -218,8 +181,6 @@
     <string name="background_color">Barva ozadja</string>
     <string name="text_color">Barva besedila</string>
     <string name="primary_color">Primarna barva</string>
-    <string name="accent_color_white">Accent color of white theme</string>
-    <string name="accent_color_black_and_white">Accent color of Black &amp; White theme</string>
     <string name="foreground_color">Barva ospredja</string>
     <string name="app_icon_color">Barva ikone aplikacije</string>
     <string name="bottom_navigation_bar_color">Barva spodnje navigacijske vrstice</string>
@@ -238,7 +199,6 @@
     <string name="app_icon_color_warning">OPOZORILO: Nekateri zaganjalniki ne znajo upravljati z ikono aplikacije, nastavljene po meri. Če ikona izgine, poskusite zagnati aplikacijo skozi Google Play ali kak drug pripomoček, če je to možno.
         Ko je zagnana, nastavite nazaj privzeto oranžno ikono #F57C00. V najslabšem primeru bo potrebno aplikacijo ponovno namestiti.</string>
     <string name="share_colors_success">Barve so bile uspešno posodobljene. Nova tema \'Deljeno\' je bila dodana. V prihodnje za spreminjanje barv uporabljajte to.</string>
-    <string name="shared_theme_note">Note that even though you are using the Pro app version, you still need Simple Thank You for technical reasons. It takes care of the color synchronization.</string>
     <string name="purchase_thank_you">
         <![CDATA[
             Prosimo, kupite aplikacijo <a href="https://play.google.com/store/apps/details?id=com.simplemobiletools.thankyou">Simple Thank You</a>, da odklenete to funkcijo in podpirate razvov. Hvala!
@@ -250,7 +210,6 @@
     <string name="dark_theme">Temno</string>
     <string name="solarized">Osončeno</string>
     <string name="dark_red">Temno rdeče</string>
-    <string name="white">White</string>
     <string name="black_white">Črno &amp; belo</string>
     <string name="custom">Po meri</string>
     <string name="shared">Deljeno</string>
@@ -266,7 +225,6 @@
     <string name="share">Deli</string>
     <string name="share_via">Deli preko</string>
     <string name="select_all">Izberi vse</string>
-    <string name="select_text">Select text</string>
     <string name="hide">Skrij</string>
     <string name="unhide">Odkrij</string>
     <string name="hide_folder">Skrij mapo</string>
@@ -279,11 +237,6 @@
     <string name="redo">Ponovno uveljavi</string>
     <string name="print">Natisni</string>
     <string name="create_shortcut">Create shortcut</string>
-    <string name="add_number_to_contact">Add number to contact</string>
-    <string name="view_contact_details">View contact details</string>
-    <string name="call_from_sim_1">Call from SIM 1</string>
-    <string name="call_from_sim_2">Call from SIM 2</string>
-    <string name="toggle_filename">Preklopi vidljivost imen datotek</string>
 
     <!-- Sorting -->
     <string name="sort_by">Razvrsti po</string>
@@ -300,12 +253,6 @@
     <string name="descending">Padajoče</string>
     <string name="use_for_this_folder">Uporabi le za to mapo</string>
     <string name="sort_numeric_parts">Sort numeric parts by actual value</string>
-    <string name="first_name">First name</string>
-    <string name="middle_name">Middle name</string>
-    <string name="surname">Surname</string>
-    <string name="full_name">Full name</string>
-    <string name="use_custom_sorting">Use custom sorting</string>
-    <string name="change_order">Change order</string>
 
     <!-- Confirmation dialog -->
     <string name="proceed_with_deletion">Res želite nadaljevati s tem izborom?</string>
@@ -352,7 +299,6 @@
     <string name="yesterday">Včeraj</string>
     <string name="today">Danes</string>
     <string name="tomorrow">Jutri</string>
-    <string name="hide_year">Hide year</string>
     <string name="seconds_raw">sekund</string>
     <string name="minutes_raw">minut</string>
     <string name="hours_raw">ur</string>
@@ -550,16 +496,12 @@
     <string name="your_sounds">Vaši zvoki</string>
     <string name="add_new_sound">Dodaj nov zvok</string>
     <string name="no_sound">Brez zvoka</string>
-    <string name="during_day_at_hh_mm">During the day at hh:mm</string>
-    <string name="during_day_at">During the day at %02d:%02d</string>
 
     <!-- Settings -->
     <string name="settings">Nastavitve</string>
     <string name="purchase_simple_thank_you">Kupite aplikacijo Simple Thank You</string>
     <string name="customize_colors">Prilagodite barve</string>
-    <string name="customize_colors_locked">Prilagodite barve (Locked)</string>
     <string name="customize_widget_colors">Prilagodite barve pripomočka</string>
-    <string name="customize_notifications">Customize notifications</string>
     <string name="use_english_language">Uporabljaj angleški jezik</string>
     <string name="show_hidden_items">Prikaži skrite elemente</string>
     <string name="font_size">Velikost pisave</string>
@@ -590,8 +532,6 @@
     <string name="import_settings">Uvozi nastavitve</string>
     <string name="settings_exported_successfully">Nastavitve uspešno izvožene</string>
     <string name="settings_imported_successfully">Nastavitve uspešno uvožene</string>
-    <string name="start_name_with_surname">Start name with surname</string>
-    <string name="clear_cache">Clear cache</string>
 
     <!-- Setting sections -->
     <string name="visibility">Vidljivost</string>
@@ -603,14 +543,6 @@
     <string name="startup">Zagon</string>
     <string name="text">Besedilo</string>
     <string name="migrating">Migracija</string>
-
-    <!-- Default tabs to open -->
-    <string name="default_tab_to_open">Tab to open at app start</string>
-    <string name="contacts_tab">Contacts</string>
-    <string name="favorites_tab">Favorites</string>
-    <string name="call_history_tab">Call History</string>
-    <string name="groups_tab">Groups</string>
-    <string name="last_used_tab">Last used one</string>
 
     <!-- Recycle Bin -->
     <string name="restore_this_file">Obnovi to datoteko</string>
@@ -715,7 +647,6 @@
     <string name="email_label">"Svoje predloge in povratne informacije pošljite na "</string>
     <string name="upgrade_to_pro">Nadgradi na Pro</string>
     <string name="more_apps_underlined"><u>Več aplikacij</u></string>
-    <string name="more_apps_from_us_underlined"><u>More apps from us</u></string>
     <string name="third_party_licences_underlined"><u>Licence tretjih oseb</u></string>
     <string name="invite_friends_underlined"><u>Povabi prijatelje</u></string>
     <string name="share_text">Oglejte si tudi %1$s na %2$s</string>
@@ -739,13 +670,8 @@
     <string name="purchase">Kupi</string>
     <string name="update_thank_you">Prosimo nadgradite Simple Thank You na zadnjo verzijo</string>
     <string name="before_asking_question_read_faq">Pred zastavljanjem vprašanje preverite nastavitve aplikacije in preberite pogosta vprašanja in odgovore. Morda je rešitev že tam.</string>
-    <string name="before_rate_read_faq">Before you rate us, please check the app settings and read the Frequently Asked Questions first. If you have any problems, maybe the solution is there.</string>
-    <string name="make_sure_latest">Also make sure that you are using the latest app version.</string>
     <string name="read_it">Preberite</string>
-    <string name="read_faq">Read FAQ</string>
     <string name="rate_us_prompt">Živjo,\n\nizgleda, da že nekaj časa uporabljate aplikacijo. To zares cenimo.\n\nLahko nam naredite uslugo in nas ocenite na Google Play. To bi nam res pomagalo.\n\nKakorkoli se že boste odločili, tega sporočila ne bomo več prikazovali.\n\nHvala!</string>
-    <string name="rate_our_app">Rate our app please :)</string>
-    <string name="thank_you">Thank you</string>
 
     <!-- New app (do not translate anything on the 4th line) -->
     <string name="new_app">
@@ -753,46 +679,10 @@
             Pozdravljeni,<br><br>
             želimo vam sporočiti, da smo pred kratkim objavili novo aplikacijo:<br><br>
             <a href="%1$s">%2$s</a><br><br>
-            <a href="%3$s">%4$s</a><br><br>
-            <a href="%5$s">%6$s</a><br><br>
             Prenesete jo lahko s klikom na naslov.<br><br>
             Hvala
         ]]>
     </string>
-
-    <string name="simple_app_launcher">Simple App Launcher</string>
-    <string name="simple_calculator">Simple Calculator</string>
-    <string name="simple_calendar">Simple Calendar</string>
-    <string name="simple_camera">Simple Camera</string>
-    <string name="simple_clock">Simple Clock</string>
-    <string name="simple_contacts">Simple Contacts</string>
-    <string name="simple_dialer">Simple Dialer</string>
-    <string name="simple_draw">Simple Draw</string>
-    <string name="simple_file_manager">Simple File Manager</string>
-    <string name="simple_flashlight">Simple Flashlight</string>
-    <string name="simple_gallery">Simple Gallery</string>
-    <string name="simple_music_player">Simple Music Player</string>
-    <string name="simple_notes">Simple Notes</string>
-    <string name="simple_sms_messenger">Simple SMS Messenger</string>
-    <string name="simple_thank_you">Simple Thank You</string>
-    <string name="simple_voice_recorder">Simple Voice Recorder</string>
-
-    <string name="app_launcher_short">App Launcher</string>
-    <string name="calculator_short">Calculator</string>
-    <string name="calendar_short">Calendar</string>
-    <string name="camera_short">Camera</string>
-    <string name="clock_short">Clock</string>
-    <string name="contacts_short">Contacts</string>
-    <string name="dialer_short">Dialer</string>
-    <string name="draw_short">Draw</string>
-    <string name="file_manager_short">File Manager</string>
-    <string name="flashlight_short">Flashlight</string>
-    <string name="gallery_short">Gallery</string>
-    <string name="music_player_short">Music Player</string>
-    <string name="notes_short">Notes</string>
-    <string name="sms_messenger_short">SMS Messenger</string>
-    <string name="thank_you_short">Thank You</string>
-    <string name="voice_recorder_short">Voice Recorder</string>
 
     <string name="sideloaded_app">
         <![CDATA[
@@ -823,53 +713,6 @@
     <string name="faq_8_text_commons">As your app version is no longer updated, the bugs you have maybe spotted will never be fixed. There will also be no new functions added. You can purchase the Pro version on Google Play for a small sum of money.
         It is a one time payment, which means that once you purchase it, you will never have to pay again. Not even after getting a new device. If you won\'t like the Pro version, you can just uninstall it within a few hours and you will automatically get your money back.
         If you want a refund anytime later, just contact us at hello@simplemobiletools.com and you will get it.</string>
-    <string name="faq_9_title_commons">How can I select multiple items at once?</string>
-    <string name="faq_9_text_commons">There are multiple ways of doing that. The first one is starting the selection mode by long pressing one item, then short clicking on others to select them. The second way is similar to selecting items on PCs with a mouse,
-        just start the selection mode by long pressing one item, then with your finger still down drag it across other items for selecting. The third way of selecting multiple items is long pressing one item, then long pressing another one and everything in between gets selected. If you
-        want to select all items, just long press one item, then click at the selected item counter at the top left corner. That will select or unselect all everything.</string>
-    <string name="faq_10_title_commons">I have purchased the app, but I cannot download it on another device.</string>
-    <string name="faq_10_text_commons">Try clearing your Google Play app cache and restarting your device. It is some Google Play glitch, not really related to the app itself.</string>
-
-    <!-- Pro comparison (shown in the deprecated free apps) -->
-    <string name="why_upgrade">Get the Pro version now!</string>
-    <string name="why_upgrade_basic_version">Basic</string>
-    <string name="why_upgrade_pro_version">Pro</string>
-    <string name="why_upgrade_no_ads">No ads</string>
-    <string name="why_upgrade_no_internet_access">No internet access</string>
-    <string name="why_upgrade_footer">+ 100% Money Back Guarantee</string>
-    <string name="why_upgrade_improved_design">Improved design</string>
-
-    <!-- Gallery Pro -->
-    <string name="why_upgrade_advanced_photo_editor">Advanced photo editor</string>
-    <string name="why_upgrade_heic_support">HEIC/HEIF file support</string>
-    <string name="why_upgrade_batch_renaming">Advanced batch file renaming</string>
-    <string name="why_upgrade_folder_locking">Individual folder locking</string>
-    <string name="why_upgrade_printing_support">Printing support</string>
-
-    <!-- Calendar Pro -->
-    <string name="why_upgrade_time_zone_support">Time zone support</string>
-    <string name="why_upgrade_attendees_emails">Attendees and email reminders</string>
-    <string name="why_upgrade_easy_event_importing">Easy event importing</string>
-    <string name="why_upgrade_new_widgets">New widgets</string>
-
-    <!-- Contacts Pro -->
-    <string name="why_upgrade_duplicate_contact_merging">Improved duplicate contact merging</string>
-    <string name="why_upgrade_font_size_customization">Font size customization</string>
-    <string name="why_upgrade_private_contact_sharing">Optional private contact sharing within our apps</string>
-    <string name="why_upgrade_customizable_contact_ringtones">Customizable contact ringtones</string>
-
-    <!-- Notes Pro -->
-    <string name="why_upgrade_checklists">Checklists</string>
-    <string name="why_upgrade_different_note_per_widget">Different note and colors per widget</string>
-
-    <!-- File Manager Pro -->
-    <string name="why_upgrade_date_and_time_format">Date and time format customization</string>
-    <string name="why_upgrade_shortcuts">Home screen shortcuts</string>
-    <string name="why_upgrade_file_compression">File compression support</string>
-
-    <!-- Draw Pro -->
-    <string name="why_upgrade_background_color_customization">Background color customization</string>
-    <string name="why_upgrade_file_importing">File importing support</string>
 
     <!-- License -->
     <string name="notice">Da si olajšamo delo, aplikacija uporablja naslednje programske knjižnice. Hvala.</string>
@@ -898,16 +741,8 @@
     <string name="sanselan_title">Apache Sanselan (branje metapodatkov slik)</string>
     <string name="filters_title">Android Photo Filters (filtri za slike)</string>
     <string name="gesture_views_title">Gesture Views (povečljive slike)</string>
-    <string name="indicator_fast_scroll_title">Indicator Fast Scroll (letters on scrollbar)</string>
-    <string name="event_bus_title">Event Bus (communication within the app)</string>
-    <string name="audio_record_view_title">Audio Record View (audio visualization)</string>
-    <string name="sms_mms_title">SMS MMS (SMS and MMS handling)</string>
-    <string name="apng_title">APNG Android (animated WebP support)</string>
 
     <!-- Google Play listing -->
     <string name="deprecated_app">ZASTARELO: Ta verzija aplikacije se ne vzdržuje več, pridobite si Pro verzijo na https://play.google.com/store/apps/details?id=com.simplemobiletools.xxx.pro</string>
     <string name="pro_app_refund">Ne pozabite - če odstranite katerokoli plačljivo aplikacijo v dveh urah, dobite povrnjen avtomatično denar. Če želite povrnitev denarja po preteku tega časa, nas kontaktirajte na hello@simplemobiletools.com in poskrbeli bomo za to. Zaradi tega je preizkušanje aplikacije še bolj preprosto. :)</string>
-
-    <!-- Description of our developer profile on Google Play, it can have max 140 characters -->
-    <string name="developer_description">A group of simple, open source Android apps with customizable widgets, without ads and unnecessary permissions.</string>
 </resources>

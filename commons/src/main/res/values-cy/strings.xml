@@ -10,10 +10,7 @@
     <string name="edit_with">Golygu gyda</string>
     <string name="no_app_found">Ni chanfuwyd ap dilys</string>
     <string name="set_as">Gosod fel</string>
-    <string name="copy_to_clipboard">Copy to clipboard</string>
-    <string name="copy_number_to_clipboard">Copy number to clipboard</string>
     <string name="value_copied_to_clipboard">Copïwyd y gwerth i\'r clipfwrdd</string>
-    <string name="dial_number">Dial number</string>
     <string name="unknown">Anhysbys</string>
     <string name="always">Pob tro</string>
     <string name="never">Byth</string>
@@ -28,34 +25,6 @@
     <string name="download">Lawrlwytho</string>
     <string name="notification">Notification</string>
     <string name="email">Email</string>
-    <string name="previous">Previous</string>
-    <string name="playpause">Play / Pause</string>
-    <string name="next">Next</string>
-    <string name="number">Rhif</string>
-    <string name="no_contacts_found">Ni chanfuwyd unrhyw gysylltiadau</string>
-    <string name="request_the_required_permissions">Gofyn am y caniatâd sydd ei angen</string>
-    <string name="no_access_to_contacts">The app could not access your contacts</string>
-    <string name="insert_text_here">Insert text here</string>
-
-    <!-- View types -->
-    <string name="change_view_type">Change view type</string>
-    <string name="grid">Grid</string>
-    <string name="list">List</string>
-    <string name="increase_column_count">Increase column count</string>
-    <string name="reduce_column_count">Reduce column count</string>
-    <string name="change_cover_image">Change cover image</string>
-    <string name="select_photo">Select photo</string>
-
-    <!-- Blocked numbers -->
-    <string name="manage_blocked_numbers">Rheoli rhifau wedi\'u rhwystro</string>
-    <string name="not_blocking_anyone">Nid wyt yn rhwystro unrhyw un.</string>
-    <string name="add_a_blocked_number">Ychwanegu rif i\'w rwystro</string>
-    <string name="block_number">Rhwystro rhif</string>
-    <string name="block_numbers">Rhwystro rhifau</string>
-    <string name="blocked_numbers">Rhifau wedi\'u rhwystro</string>
-    <string name="must_make_default_dialer">Rhaid gwneud yr ap hwn yr ap deialu rhagosodedig er mwyn defnyddio rhifau wedi\'u rhwystro.</string>
-    <string name="set_as_default">Defnyddio fel y rhagosodedig</string>
-    <string name="block_confirmation">Are you sure you want to block \"%s\"?</string>
 
     <!-- Favorites -->
     <string name="favorites">Ffefrynnau</string>
@@ -98,7 +67,7 @@
     <string name="simple_renaming">Simple renaming</string>
     <string name="pattern_renaming">Pattern</string>
     <string name="string_to_add">String to add</string>
-    <string name="rename_date_time_pattern">%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second\n%i - number increasing from 1</string>
+    <string name="rename_date_time_pattern">%Y - year\n%M - month\n%D - day\n%h - hour\n%m - minute\n%s - second</string>
 
     <!-- Copy / Move -->
     <string name="copy">Copïo</string>
@@ -185,12 +154,6 @@
         <item quantity="other">Yn dileu %d eitem</item>
     </plurals>
 
-    <!-- Are you sure you want to delete 5 contacts? -->
-    <plurals name="delete_contacts">
-        <item quantity="one">%d contact</item>
-        <item quantity="other">%d contacts</item>
-    </plurals>
-
     <!-- Storages -->
     <string name="select_storage">Dewisa storfa</string>
     <string name="internal">Mewnol</string>
@@ -225,8 +188,6 @@
     <string name="background_color">Lliw cefndir</string>
     <string name="text_color">Lliw testun</string>
     <string name="primary_color">Prif liw</string>
-    <string name="accent_color_white">Accent color of white theme</string>
-    <string name="accent_color_black_and_white">Accent color of Black &amp; White theme</string>
     <string name="foreground_color">Lliw blaendir</string>
     <string name="app_icon_color">Lliw eicon yr ap</string>
     <string name="bottom_navigation_bar_color">Lliw bar llywio gwaelod</string>
@@ -245,7 +206,6 @@
     <string name="app_icon_color_warning">RHYBUDD: Mae rhai lansiwyr yn methu ag ymdrin addasiadau i apiau yn gywir. Yn yr achos bod yr eicon yn diflannu, rho gynnig ar lansio\'r ap trwy Google Play neu ryw declyn, os ar gael.
         Unwaith y bydd wedi lansio, ail-osoda\'r eicon oren rhagosodedig #F57C00. Yn yr achos gwaethaf, bydd rhaid ail-osod yr ap.</string>
     <string name="share_colors_success">Diweddarwyd y lliwiau yn llwyddiannus. Mae thema newydd o\'r enw \'Rhennir\' wedi ei ychwanegu. Defnyddia honno i ddiweddaru lliwiau pob ap yn y dyfodol.</string>
-    <string name="shared_theme_note">Note that even though you are using the Pro app version, you still need Simple Thank You for technical reasons. It takes care of the color synchronization.</string>
     <string name="purchase_thank_you">
         <![CDATA[
             Pryna <a href="https://play.google.com/store/apps/details?id=com.simplemobiletools.thankyou">Simple Thank You</a> i ddatgloi’r nodwedd hon a chefnogi datblygiad, os gweli’n dda. Diolch!
@@ -257,7 +217,6 @@
     <string name="dark_theme">Tywyll</string>
     <string name="solarized">Solareiddiwyd</string>
     <string name="dark_red">Coch tywyll</string>
-    <string name="white">White</string>
     <string name="black_white">Du a Gwyn</string>
     <string name="custom">Addasedig</string>
     <string name="shared">Rhennir</string>
@@ -273,7 +232,6 @@
     <string name="share">Rhannu</string>
     <string name="share_via">Rhannu gyda</string>
     <string name="select_all">Dewis y cwbl</string>
-    <string name="select_text">Select text</string>
     <string name="hide">Cuddio</string>
     <string name="unhide">Datguddio</string>
     <string name="hide_folder">Cuddio ffolder</string>
@@ -286,11 +244,6 @@
     <string name="redo">Ail-wneud</string>
     <string name="print">Argraffu</string>
     <string name="create_shortcut">Create shortcut</string>
-    <string name="add_number_to_contact">Add number to contact</string>
-    <string name="view_contact_details">View contact details</string>
-    <string name="call_from_sim_1">Call from SIM 1</string>
-    <string name="call_from_sim_2">Call from SIM 2</string>
-    <string name="toggle_filename">Toggle filename visibility</string>
 
     <!-- Sorting -->
     <string name="sort_by">Trefnu yn ôl</string>
@@ -307,12 +260,6 @@
     <string name="descending">Disgynnol</string>
     <string name="use_for_this_folder">Defnyddio i\'r ffolder hon yn unig</string>
     <string name="sort_numeric_parts">Sort numeric parts by actual value</string>
-    <string name="first_name">Enw cyntaf</string>
-    <string name="middle_name">Enw canol</string>
-    <string name="surname">Cyfenw</string>
-    <string name="full_name">Full name</string>
-    <string name="use_custom_sorting">Use custom sorting</string>
-    <string name="change_order">Change order</string>
 
     <!-- Confirmation dialog -->
     <string name="proceed_with_deletion">Wyt ti\'n bendant am barhau i ddileu?</string>
@@ -357,7 +304,6 @@
     <string name="yesterday">Ddoe</string>
     <string name="today">Heddiw</string>
     <string name="tomorrow">Yfory</string>
-    <string name="hide_year">Hide year</string>
     <string name="seconds_raw">eiliadau</string>
     <string name="minutes_raw">munudau</string>
     <string name="hours_raw">oriau</string>
@@ -611,16 +557,12 @@
     <string name="your_sounds">Dy synau di</string>
     <string name="add_new_sound">Ychwanegu sŵn newydd</string>
     <string name="no_sound">Dim sŵn</string>
-    <string name="during_day_at_hh_mm">During the day at hh:mm</string>
-    <string name="during_day_at">During the day at %02d:%02d</string>
 
     <!-- Settings -->
     <string name="settings">Gosodiadau</string>
     <string name="purchase_simple_thank_you">Prynu Simple Thank You</string>
     <string name="customize_colors">Addasu lliwiau</string>
-    <string name="customize_colors_locked">Addasu lliwiau (Locked)</string>
     <string name="customize_widget_colors">Addasu lliwiau teclyn</string>
-    <string name="customize_notifications">Customize notifications</string>
     <string name="use_english_language">Defnyddio Saesneg</string>
     <string name="show_hidden_items">Dangos eitemau cudd</string>
     <string name="font_size">Maint ffont</string>
@@ -651,8 +593,6 @@
     <string name="import_settings">Mewnforio gosodiadau</string>
     <string name="settings_exported_successfully">Allforiwyd gosodiadau yn llwyddiannus</string>
     <string name="settings_imported_successfully">Mewnforiwyd gosodiadau yn llwyddiannus</string>
-    <string name="start_name_with_surname">Dangos enw gyda\'r cyfenw gyntaf</string>
-    <string name="clear_cache">Clear cache</string>
 
     <!-- Setting sections -->
     <string name="visibility">Gweladwyedd</string>
@@ -664,14 +604,6 @@
     <string name="startup">Cychwyn</string>
     <string name="text">Testun</string>
     <string name="migrating">Mudo</string>
-
-    <!-- Default tabs to open -->
-    <string name="default_tab_to_open">Tab to open at app start</string>
-    <string name="contacts_tab">Contacts</string>
-    <string name="favorites_tab">Favorites</string>
-    <string name="call_history_tab">Call History</string>
-    <string name="groups_tab">Groups</string>
-    <string name="last_used_tab">Last used one</string>
 
     <!-- Recycle Bin -->
     <string name="restore_this_file">Adfer y ffeil hon</string>
@@ -774,7 +706,6 @@
     <string name="email_label">Anfona dy adborth neu awgrymiadau at</string>
     <string name="upgrade_to_pro">Uwchraddio i Pro</string>
     <string name="more_apps_underlined"><u>Rhagor o apiau</u></string>
-    <string name="more_apps_from_us_underlined"><u>More apps from us</u></string>
     <string name="third_party_licences_underlined"><u>Trwyddedau trydydd parti</u></string>
     <string name="invite_friends_underlined"><u>Gwahodd ffrindiau</u></string>
     <string name="share_text">Hei, cymer olwg ar %1$s a %2$s</string>
@@ -798,13 +729,8 @@
     <string name="purchase">Prynu</string>
     <string name="update_thank_you">Diweddara Simple Thank You i\'r fersiwn diweddaraf</string>
     <string name="before_asking_question_read_faq">Cyn gofyn cwestiwn, gwiria osodiadau\'r ap a\'r atebion i Gwestiynau Cyffredin yn gyntaf. Gall fod y datrysiad yno.</string>
-    <string name="before_rate_read_faq">Before you rate us, please check the app settings and read the Frequently Asked Questions first. If you have any problems, maybe the solution is there.</string>
-    <string name="make_sure_latest">Also make sure that you are using the latest app version.</string>
     <string name="read_it">Read it</string>
-    <string name="read_faq">Read FAQ</string>
     <string name="rate_us_prompt">Hello,\n\nit looks like you are using this app for quite a while already, and we really appreciate it.\n\nIf we can ask you a favor, please rate us on Google Play. That would really help us a lot.\n\nNo matter how you decide, you will not see this message again.\n\nThanks!</string>
-    <string name="rate_our_app">Rate our app please :)</string>
-    <string name="thank_you">Thank you</string>
 
     <!-- New app (do not translate anything on the 4th line) -->
     <string name="new_app">
@@ -812,46 +738,10 @@
             S\'mae,<br><br>
             Jyst yn rhoi gwybod i ti am ap newydd wedi\'i ryddhau yn ddiweddar:<br><br>
             <a href="%1$s">%2$s</a><br><br>
-            <a href="%3$s">%4$s</a><br><br>
-            <a href="%5$s">%6$s</a><br><br>
             Gellir ei lawrlwytho gan glicio\'r teitl.<br><br>
             Hwyl.
         ]]>
     </string>
-
-    <string name="simple_app_launcher">Simple App Launcher</string>
-    <string name="simple_calculator">Simple Calculator</string>
-    <string name="simple_calendar">Simple Calendar</string>
-    <string name="simple_camera">Simple Camera</string>
-    <string name="simple_clock">Simple Clock</string>
-    <string name="simple_contacts">Simple Contacts</string>
-    <string name="simple_dialer">Simple Dialer</string>
-    <string name="simple_draw">Simple Draw</string>
-    <string name="simple_file_manager">Simple File Manager</string>
-    <string name="simple_flashlight">Simple Flashlight</string>
-    <string name="simple_gallery">Simple Gallery</string>
-    <string name="simple_music_player">Simple Music Player</string>
-    <string name="simple_notes">Simple Notes</string>
-    <string name="simple_sms_messenger">Simple SMS Messenger</string>
-    <string name="simple_thank_you">Simple Thank You</string>
-    <string name="simple_voice_recorder">Simple Voice Recorder</string>
-
-    <string name="app_launcher_short">App Launcher</string>
-    <string name="calculator_short">Calculator</string>
-    <string name="calendar_short">Calendar</string>
-    <string name="camera_short">Camera</string>
-    <string name="clock_short">Clock</string>
-    <string name="contacts_short">Contacts</string>
-    <string name="dialer_short">Dialer</string>
-    <string name="draw_short">Draw</string>
-    <string name="file_manager_short">File Manager</string>
-    <string name="flashlight_short">Flashlight</string>
-    <string name="gallery_short">Gallery</string>
-    <string name="music_player_short">Music Player</string>
-    <string name="notes_short">Notes</string>
-    <string name="sms_messenger_short">SMS Messenger</string>
-    <string name="thank_you_short">Thank You</string>
-    <string name="voice_recorder_short">Voice Recorder</string>
 
     <string name="sideloaded_app">
         <![CDATA[
@@ -882,53 +772,6 @@
     <string name="faq_8_text_commons">As your app version is no longer updated, the bugs you have maybe spotted will never be fixed. There will also be no new functions added. You can purchase the Pro version on Google Play for a small sum of money.
         It is a one time payment, which means that once you purchase it, you will never have to pay again. Not even after getting a new device. If you won\'t like the Pro version, you can just uninstall it within a few hours and you will automatically get your money back.
         If you want a refund anytime later, just contact us at hello@simplemobiletools.com and you will get it.</string>
-    <string name="faq_9_title_commons">How can I select multiple items at once?</string>
-    <string name="faq_9_text_commons">There are multiple ways of doing that. The first one is starting the selection mode by long pressing one item, then short clicking on others to select them. The second way is similar to selecting items on PCs with a mouse,
-        just start the selection mode by long pressing one item, then with your finger still down drag it across other items for selecting. The third way of selecting multiple items is long pressing one item, then long pressing another one and everything in between gets selected. If you
-        want to select all items, just long press one item, then click at the selected item counter at the top left corner. That will select or unselect all everything.</string>
-    <string name="faq_10_title_commons">I have purchased the app, but I cannot download it on another device.</string>
-    <string name="faq_10_text_commons">Try clearing your Google Play app cache and restarting your device. It is some Google Play glitch, not really related to the app itself.</string>
-
-    <!-- Pro comparison (shown in the deprecated free apps) -->
-    <string name="why_upgrade">Get the Pro version now!</string>
-    <string name="why_upgrade_basic_version">Basic</string>
-    <string name="why_upgrade_pro_version">Pro</string>
-    <string name="why_upgrade_no_ads">No ads</string>
-    <string name="why_upgrade_no_internet_access">No internet access</string>
-    <string name="why_upgrade_footer">+ 100% Money Back Guarantee</string>
-    <string name="why_upgrade_improved_design">Improved design</string>
-
-    <!-- Gallery Pro -->
-    <string name="why_upgrade_advanced_photo_editor">Advanced photo editor</string>
-    <string name="why_upgrade_heic_support">HEIC/HEIF file support</string>
-    <string name="why_upgrade_batch_renaming">Advanced batch file renaming</string>
-    <string name="why_upgrade_folder_locking">Individual folder locking</string>
-    <string name="why_upgrade_printing_support">Printing support</string>
-
-    <!-- Calendar Pro -->
-    <string name="why_upgrade_time_zone_support">Time zone support</string>
-    <string name="why_upgrade_attendees_emails">Attendees and email reminders</string>
-    <string name="why_upgrade_easy_event_importing">Easy event importing</string>
-    <string name="why_upgrade_new_widgets">New widgets</string>
-
-    <!-- Contacts Pro -->
-    <string name="why_upgrade_duplicate_contact_merging">Improved duplicate contact merging</string>
-    <string name="why_upgrade_font_size_customization">Font size customization</string>
-    <string name="why_upgrade_private_contact_sharing">Optional private contact sharing within our apps</string>
-    <string name="why_upgrade_customizable_contact_ringtones">Customizable contact ringtones</string>
-
-    <!-- Notes Pro -->
-    <string name="why_upgrade_checklists">Checklists</string>
-    <string name="why_upgrade_different_note_per_widget">Different note and colors per widget</string>
-
-    <!-- File Manager Pro -->
-    <string name="why_upgrade_date_and_time_format">Date and time format customization</string>
-    <string name="why_upgrade_shortcuts">Home screen shortcuts</string>
-    <string name="why_upgrade_file_compression">File compression support</string>
-
-    <!-- Draw Pro -->
-    <string name="why_upgrade_background_color_customization">Background color customization</string>
-    <string name="why_upgrade_file_importing">File importing support</string>
 
     <!-- License -->
     <string name="notice">Mae\'r ap hwn yn defnyddio\'r llyfrgelloedd trydydd parti canlynol i wneud bywyd yn haws. Diolch am bob un.</string>
@@ -957,16 +800,8 @@
     <string name="sanselan_title">Apache Sanselan (darllen metadata delweddau)</string>
     <string name="filters_title">Android Photo Filters (hidlyddion delweddau)</string>
     <string name="gesture_views_title">Gesture Views (delweddau chwyddadwy)</string>
-    <string name="indicator_fast_scroll_title">Indicator Fast Scroll (letters on scrollbar)</string>
-    <string name="event_bus_title">Event Bus (communication within the app)</string>
-    <string name="audio_record_view_title">Audio Record View (audio visualization)</string>
-    <string name="sms_mms_title">SMS MMS (SMS and MMS handling)</string>
-    <string name="apng_title">APNG Android (animated WebP support)</string>
 
     <!-- Google Play listing -->
     <string name="deprecated_app">DEPRECATED: This version of the app is no longer maintained, get the Pro version at https://play.google.com/store/apps/details?id=com.simplemobiletools.xxx.pro</string>
     <string name="pro_app_refund">Don\'t forget that if you uninstall any paid app within 2 hours, you will automatically be refunded. If you want a refund anytime later, just contact us at hello@simplemobiletools.com and you will get it. That makes it easy to try it out :)</string>
-
-    <!-- Description of our developer profile on Google Play, it can have max 140 characters -->
-    <string name="developer_description">A group of simple, open source Android apps with customizable widgets, without ads and unnecessary permissions.</string>
 </resources>

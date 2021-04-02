@@ -4,22 +4,16 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Point
+import android.media.MediaMetadataRetriever
 import android.os.StatFs
-import android.provider.MediaStore
-import android.telephony.PhoneNumberUtils
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.TextUtils
 import android.text.style.ForegroundColorSpan
-import android.widget.TextView
 import com.bumptech.glide.signature.ObjectKey
 import com.simplemobiletools.commons.helpers.*
-import org.joda.time.DateTime
-import org.joda.time.format.DateTimeFormat
 import java.io.File
-import java.text.DateFormat
 import java.text.Normalizer
-import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
 
@@ -45,11 +39,7 @@ fun String.isAValidFilename(): Boolean {
     return true
 }
 
-fun String.getOTGPublicPath(context: Context) = "${context.baseConfig.OTGTreeUri}/document/${context.baseConfig.OTGPartition}%3A${substring(context.baseConfig.OTGPath.length).replace("/", "%2F")}"
-
 fun String.isMediaFile() = isImageFast() || isVideoFast() || isGif() || isRawFast() || isSvg() || isPortrait()
-
-fun String.isWebP() = endsWith(".webp", true)
 
 fun String.isGif() = endsWith(".gif", true)
 
@@ -68,9 +58,9 @@ fun String.isImageFast() = photoExtensions.any { endsWith(it, true) }
 fun String.isAudioFast() = audioExtensions.any { endsWith(it, true) }
 fun String.isRawFast() = rawExtensions.any { endsWith(it, true) }
 
-fun String.isImageSlow() = isImageFast() || getMimeType().startsWith("image") || startsWith(MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString())
-fun String.isVideoSlow() = isVideoFast() || getMimeType().startsWith("video") || startsWith(MediaStore.Video.Media.EXTERNAL_CONTENT_URI.toString())
-fun String.isAudioSlow() = isAudioFast() || getMimeType().startsWith("audio") || startsWith(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI.toString())
+fun String.isImageSlow() = isImageFast() || getMimeType().startsWith("image")
+fun String.isVideoSlow() = isVideoFast() || getMimeType().startsWith("video")
+fun String.isAudioSlow() = isAudioFast() || getMimeType().startsWith("audio")
 
 fun String.getCompressionFormat() = when (getFilenameExtension().toLowerCase()) {
     "png" -> Bitmap.CompressFormat.PNG
@@ -79,8 +69,6 @@ fun String.getCompressionFormat() = when (getFilenameExtension().toLowerCase()) 
 }
 
 fun String.areDigitsOnly() = matches(Regex("[0-9]+"))
-
-fun String.areLettersOnly() = matches(Regex("[a-zA-Z]+"))
 
 fun String.getGenericMimeType(): String {
     if (!contains("/"))
@@ -94,8 +82,51 @@ fun String.getParentPath() = removeSuffix("/${getFilenameFromPath()}")
 
 fun String.containsNoMedia() = File(this).containsNoMedia()
 
-fun String.doesThisOrParentHaveNoMedia(folderNoMediaStatuses: HashMap<String, Boolean>, callback: ((path: String, hasNoMedia: Boolean) -> Unit)?) =
-    File(this).doesThisOrParentHaveNoMedia(folderNoMediaStatuses, callback)
+fun String.doesThisOrParentHaveNoMedia() = File(this).doesThisOrParentHaveNoMedia()
+
+fun String.getDuration() = getFileDurationSeconds()?.getFormattedDuration()
+
+fun String.getFileDurationSeconds(): Int? {
+    return try {
+        val retriever = MediaMetadataRetriever()
+        retriever.setDataSource(this)
+        val time = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)
+        val timeInMs = java.lang.Long.parseLong(time)
+        (timeInMs / 1000).toInt()
+    } catch (e: Exception) {
+        null
+    }
+}
+
+fun String.getFileArtist(): String? {
+    return try {
+        val retriever = MediaMetadataRetriever()
+        retriever.setDataSource(this)
+        retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)
+    } catch (ignored: Exception) {
+        null
+    }
+}
+
+fun String.getFileAlbum(): String? {
+    return try {
+        val retriever = MediaMetadataRetriever()
+        retriever.setDataSource(this)
+        retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM)
+    } catch (ignored: Exception) {
+        null
+    }
+}
+
+fun String.getFileSongTitle(): String? {
+    return try {
+        val retriever = MediaMetadataRetriever()
+        retriever.setDataSource(this)
+        retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE)
+    } catch (ignored: Exception) {
+        null
+    }
+}
 
 fun String.getImageResolution(): Point? {
     val options = BitmapFactory.Options()
@@ -165,103 +196,21 @@ fun String.highlightTextPart(textToHighlight: String, color: Int, highlightAll: 
     return spannableString
 }
 
-fun String.searchMatches(textToHighlight: String): ArrayList<Int> {
-    val indexes = arrayListOf<Int>()
-    var indexOf = indexOf(textToHighlight, 0, true)
+fun String.getFileSignature() = ObjectKey(getFileKey())
 
-    var offset = 0
-    while (offset < length && indexOf != -1) {
-        indexOf = indexOf(textToHighlight, offset, true)
-
-        if (indexOf == -1) {
-            break
-        } else {
-            indexes.add(indexOf)
-        }
-
-        offset = indexOf + 1
-    }
-
-    return indexes
-}
-
-fun String.getFileSignature(lastModified: Long? = null) = ObjectKey(getFileKey(lastModified))
-
-fun String.getFileKey(lastModified: Long? = null): String {
+fun String.getFileKey(): String {
     val file = File(this)
-    val modified = if (lastModified != null && lastModified > 0) {
-        lastModified
-    } else {
-        file.lastModified()
-    }
-
-    return "${file.absolutePath}$modified"
+    return "${file.absolutePath}${file.lastModified()}"
 }
 
 fun String.getAvailableStorageB(): Long {
-    return try {
-        val stat = StatFs(this)
-        val bytesAvailable = stat.blockSizeLong * stat.availableBlocksLong
-        bytesAvailable
-    } catch (e: Exception) {
-        -1L
-    }
+    val stat = StatFs(this)
+    val bytesAvailable = stat.blockSizeLong * stat.availableBlocksLong
+    return bytesAvailable
 }
 
 // remove diacritics, for example č -> c
 fun String.normalizeString() = Normalizer.normalize(this, Normalizer.Form.NFD).replace(normalizeRegex, "")
-
-// if we are comparing phone numbers, compare just the last 9 digits
-fun String.trimToComparableNumber(): String {
-    val normalizedNumber = this.normalizeString()
-    val startIndex = Math.max(0, normalizedNumber.length - 9)
-    return normalizedNumber.substring(startIndex)
-}
-
-// get the contact names first letter at showing the placeholder without image
-fun String.getNameLetter() = normalizeString().toCharArray().getOrNull(0)?.toString()?.toUpperCase(Locale.getDefault()) ?: "A"
-
-fun String.normalizePhoneNumber() = PhoneNumberUtils.normalizeNumber(this)
-
-fun String.highlightTextFromNumbers(textToHighlight: String, adjustedPrimaryColor: Int): SpannableString {
-    val spannableString = SpannableString(this)
-    val digits = PhoneNumberUtils.convertKeypadLettersToDigits(this)
-    if (digits.contains(textToHighlight)) {
-        val startIndex = digits.indexOf(textToHighlight, 0, true)
-        val endIndex = Math.min(startIndex + textToHighlight.length, length)
-        try {
-            spannableString.setSpan(ForegroundColorSpan(adjustedPrimaryColor), startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
-        } catch (ignored: IndexOutOfBoundsException) {
-        }
-    }
-
-    return spannableString
-}
-
-fun String.getDateTimeFromDateString(viewToUpdate: TextView? = null): DateTime {
-    val dateFormats = getDateFormats()
-    var date = DateTime()
-    for (format in dateFormats) {
-        try {
-            date = DateTime.parse(this, DateTimeFormat.forPattern(format))
-
-            val formatter = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
-            var localPattern = (formatter as SimpleDateFormat).toLocalizedPattern()
-
-            val hasYear = format.contains("y")
-            if (!hasYear) {
-                localPattern = localPattern.replace("y", "").replace(",", "").trim()
-                date = date.withYear(DateTime().year)
-            }
-
-            val formattedString = date.toString(localPattern)
-            viewToUpdate?.text = formattedString
-            break
-        } catch (ignored: Exception) {
-        }
-    }
-    return date
-}
 
 fun String.getMimeType(): String {
     val typesMap = HashMap<String, String>().apply {
@@ -756,7 +705,7 @@ fun String.getMimeType(): String {
         put("vbs", "text/vbscript")
         put("vcf", "text/x-vcard")
         put("vcproj", "application/xml")
-        put("vcs", "text/calendar")
+        put("vcs", "text/plain")
         put("vcxproj", "application/xml")
         put("vddproj", "text/plain")
         put("vdp", "text/plain")
@@ -865,6 +814,5 @@ fun String.getMimeType(): String {
         put("z", "application/x-compress")
         put("zip", "application/zip")
     }
-
     return typesMap[getFilenameExtension().toLowerCase()] ?: ""
 }

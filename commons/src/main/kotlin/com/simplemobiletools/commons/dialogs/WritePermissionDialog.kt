@@ -28,10 +28,7 @@ class WritePermissionDialog(activity: Activity, val isOTG: Boolean, val callback
 
         dialog = AlertDialog.Builder(activity)
                 .setPositiveButton(R.string.ok) { dialog, which -> dialogConfirmed() }
-                .setOnCancelListener {
-                    BaseSimpleActivity.funAfterSAFPermission?.invoke(false)
-                    BaseSimpleActivity.funAfterSAFPermission = null
-                }
+                .setOnCancelListener { BaseSimpleActivity.funAfterSAFPermission = null }
                 .create().apply {
                     activity.setupDialogStuff(view, this, R.string.confirm_storage_access_title)
                 }

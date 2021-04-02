@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.simplemobiletools.commons.R
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.baseConfig
-import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
-import com.simplemobiletools.commons.extensions.getContrastColor
 import com.simplemobiletools.commons.interfaces.MyActionModeCallback
 import com.simplemobiletools.commons.views.FastScroller
 import com.simplemobiletools.commons.views.MyRecyclerView
@@ -25,8 +23,6 @@ abstract class MyRecyclerViewAdapter(val activity: BaseSimpleActivity, val recyc
     protected val resources = activity.resources!!
     protected val layoutInflater = activity.layoutInflater
     protected var primaryColor = baseConfig.primaryColor
-    protected var adjustedPrimaryColor = activity.getAdjustedPrimaryColor()
-    protected var contrastColor = adjustedPrimaryColor.getContrastColor()
     protected var textColor = baseConfig.textColor
     protected var backgroundColor = baseConfig.backgroundColor
     protected var actModeCallback: MyActionModeCallback
@@ -51,10 +47,6 @@ abstract class MyRecyclerViewAdapter(val activity: BaseSimpleActivity, val recyc
 
     abstract fun getItemKeyPosition(key: Int): Int
 
-    abstract fun onActionModeCreated()
-
-    abstract fun onActionModeDestroyed()
-
     protected fun isOneItemSelected() = selectedKeys.size == 1
 
     init {
@@ -67,10 +59,6 @@ abstract class MyRecyclerViewAdapter(val activity: BaseSimpleActivity, val recyc
             }
 
             override fun onCreateActionMode(actionMode: ActionMode, menu: Menu?): Boolean {
-                if (getActionMenuId() == 0) {
-                    return true
-                }
-
                 isSelectable = true
                 actMode = actionMode
                 actBarTextView = layoutInflater.inflate(R.layout.actionbar_title, null) as TextView
@@ -84,7 +72,6 @@ abstract class MyRecyclerViewAdapter(val activity: BaseSimpleActivity, val recyc
                     }
                 }
                 activity.menuInflater.inflate(getActionMenuId(), menu)
-                onActionModeCreated()
                 return true
             }
 
@@ -106,7 +93,6 @@ abstract class MyRecyclerViewAdapter(val activity: BaseSimpleActivity, val recyc
                 actBarTextView?.text = ""
                 actMode = null
                 lastLongPressedItem = -1
-                onActionModeDestroyed()
             }
         }
     }
@@ -273,8 +259,6 @@ abstract class MyRecyclerViewAdapter(val activity: BaseSimpleActivity, val recyc
 
     fun updatePrimaryColor(primaryColor: Int) {
         this.primaryColor = primaryColor
-        adjustedPrimaryColor = activity.getAdjustedPrimaryColor()
-        contrastColor = adjustedPrimaryColor.getContrastColor()
     }
 
     fun updateBackgroundColor(backgroundColor: Int) {

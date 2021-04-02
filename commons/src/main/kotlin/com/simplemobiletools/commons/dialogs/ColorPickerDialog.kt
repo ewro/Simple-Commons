@@ -27,7 +27,6 @@ class ColorPickerDialog(val activity: Activity, color: Int, val removeDimmedBack
     lateinit var viewContainer: ViewGroup
     private val currentColorHsv = FloatArray(3)
     private val backgroundColor = activity.baseConfig.backgroundColor
-    private val cornerRadius = activity.getCornerRadius()
     private var isHueBeingDragged = false
     private var wasDimmedBackgroundRemoved = false
     private var dialog: AlertDialog? = null
@@ -46,9 +45,8 @@ class ColorPickerDialog(val activity: Activity, color: Int, val removeDimmedBack
             newHexField = color_picker_new_hex
 
             viewSatVal.setHue(getHue())
-
-            viewNewColor.setFillWithStroke(getColor(), backgroundColor, cornerRadius)
-            color_picker_old_color.setFillWithStroke(color, backgroundColor, cornerRadius)
+            viewNewColor.setFillWithStroke(getColor(), backgroundColor)
+            color_picker_old_color.setFillWithStroke(color, backgroundColor)
 
             val hexCode = getHexCode(color)
             color_picker_old_hex.text = "#$hexCode"
@@ -106,7 +104,7 @@ class ColorPickerDialog(val activity: Activity, color: Int, val removeDimmedBack
                 currentColorHsv[2] = 1f - 1f / viewSatVal.measuredHeight * y
 
                 moveColorPicker()
-                viewNewColor.setFillWithStroke(getColor(), backgroundColor, cornerRadius)
+                viewNewColor.setFillWithStroke(getColor(), backgroundColor)
                 newHexField.setText(getHexCode(getColor()))
                 return@OnTouchListener true
             }
@@ -171,7 +169,7 @@ class ColorPickerDialog(val activity: Activity, color: Int, val removeDimmedBack
     private fun updateHue() {
         viewSatVal.setHue(getHue())
         moveHuePicker()
-        viewNewColor.setFillWithStroke(getColor(), backgroundColor, cornerRadius)
+        viewNewColor.setFillWithStroke(getColor(), backgroundColor)
         if (removeDimmedBackground && !wasDimmedBackgroundRemoved) {
             dialog?.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
             wasDimmedBackgroundRemoved = true

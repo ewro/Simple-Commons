@@ -15,38 +15,20 @@ import kotlinx.android.synthetic.main.dialog_radio_group.view.*
  *
  * @param activity has to be activity to avoid some Theme.AppCompat issues
  * @param currPath current path to decide which storage should be preselected
- * @param pickSingleOption if only one option like "Internal" is available, select it automatically
  * @param callback an anonymous function
  *
  */
-class StoragePickerDialog(val activity: BaseSimpleActivity, val currPath: String, val showRoot: Boolean, pickSingleOption: Boolean,
-                          val callback: (pickedPath: String) -> Unit) {
+class StoragePickerDialog(val activity: BaseSimpleActivity, currPath: String, val callback: (pickedPath: String) -> Unit) {
     private val ID_INTERNAL = 1
     private val ID_SD = 2
     private val ID_OTG = 3
     private val ID_ROOT = 4
 
-    private lateinit var mDialog: AlertDialog
-    private lateinit var radioGroup: RadioGroup
+    private var mDialog: AlertDialog
+    private var radioGroup: RadioGroup
     private var defaultSelectedId = 0
-    private val availableStorages = ArrayList<String>()
 
     init {
-        availableStorages.add(activity.internalStoragePath)
-        when {
-            activity.hasExternalSDCard() -> availableStorages.add(activity.sdCardPath)
-            activity.hasOTGConnected() -> availableStorages.add("otg")
-            showRoot -> availableStorages.add("root")
-        }
-
-        if (pickSingleOption && availableStorages.size == 1) {
-            callback(availableStorages.first())
-        } else {
-            initDialog()
-        }
-    }
-
-    private fun initDialog() {
         val inflater = LayoutInflater.from(activity)
         val resources = activity.resources
         val layoutParams = RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -94,25 +76,22 @@ class StoragePickerDialog(val activity: BaseSimpleActivity, val currPath: String
             radioGroup.addView(otgButton, layoutParams)
         }
 
-        // allow for example excluding the root folder at the gallery
-        if (showRoot) {
-            val rootButton = inflater.inflate(R.layout.radio_button, null) as RadioButton
-            rootButton.apply {
-                id = ID_ROOT
-                text = resources.getString(R.string.root)
-                isChecked = basePath == "/"
-                setOnClickListener { rootPicked() }
-                if (isChecked) {
-                    defaultSelectedId = id
-                }
+        val rootButton = inflater.inflate(R.layout.radio_button, null) as RadioButton
+        rootButton.apply {
+            id = ID_ROOT
+            text = resources.getString(R.string.root)
+            isChecked = basePath == "/"
+            setOnClickListener { rootPicked() }
+            if (isChecked) {
+                defaultSelectedId = id
             }
-            radioGroup.addView(rootButton, layoutParams)
         }
+        radioGroup.addView(rootButton, layoutParams)
 
         mDialog = AlertDialog.Builder(activity)
-            .create().apply {
-                activity.setupDialogStuff(view, this, R.string.select_storage)
-            }
+                .create().apply {
+                    activity.setupDialogStuff(view, this, R.string.select_storage)
+                }
     }
 
     private fun internalPicked() {
@@ -126,14 +105,14 @@ class StoragePickerDialog(val activity: BaseSimpleActivity, val currPath: String
     }
 
     private fun otgPicked() {
-        activity.handleOTGPermission {
-            if (it) {
-                callback(activity.otgPath)
-                mDialog.dismiss()
-            } else {
-                radioGroup.check(defaultSelectedId)
+        if (activity.baseConfig.OTGPath.isEmpty()) {
+            activity.getStorageDirectories().firstOrNull { it.trimEnd('/') != activity.internalStoragePath && it.trimEnd('/') != activity.sdCardPath }?.apply {
+                activity.baseConfig.OTGPath = trimEnd('/')
             }
         }
+
+        mDialog.dismiss()
+        callback(activity.otgPath)
     }
 
     private fun rootPicked() {

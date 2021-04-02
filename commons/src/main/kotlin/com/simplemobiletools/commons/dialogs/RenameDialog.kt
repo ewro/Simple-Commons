@@ -6,14 +6,17 @@ import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.commons.R
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.adapters.RenameAdapter
-import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.extensions.baseConfig
+import com.simplemobiletools.commons.extensions.onPageChangeListener
+import com.simplemobiletools.commons.extensions.onTabSelectionChanged
+import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.helpers.RENAME_PATTERN
 import com.simplemobiletools.commons.helpers.RENAME_SIMPLE
 import com.simplemobiletools.commons.views.MyViewPager
 import kotlinx.android.synthetic.main.dialog_rename.view.*
 import java.util.*
 
-class RenameDialog(val activity: BaseSimpleActivity, val paths: ArrayList<String>, val useMediaFileExtension: Boolean, val callback: () -> Unit) {
+class RenameDialog(val activity: BaseSimpleActivity, val paths: ArrayList<String>, val callback: () -> Unit) {
     var dialog: AlertDialog? = null
     val view = LayoutInflater.from(activity).inflate(R.layout.dialog_rename, null)
     var tabsAdapter: RenameAdapter
@@ -31,7 +34,7 @@ class RenameDialog(val activity: BaseSimpleActivity, val paths: ArrayList<String
 
             val textColor = context.baseConfig.textColor
             dialog_tab_layout.setTabTextColors(textColor, textColor)
-            dialog_tab_layout.setSelectedTabIndicatorColor(context.getAdjustedPrimaryColor())
+            dialog_tab_layout.setSelectedTabIndicatorColor(context.baseConfig.primaryColor)
 
             dialog_tab_layout.onTabSelectionChanged(tabSelectedAction = {
                 viewPager.currentItem = when {
@@ -48,7 +51,7 @@ class RenameDialog(val activity: BaseSimpleActivity, val paths: ArrayList<String
                     activity.setupDialogStuff(view, this).apply {
                         window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM)
                         getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                            tabsAdapter.dialogConfirmed(useMediaFileExtension, viewPager.currentItem) {
+                            tabsAdapter.dialogConfirmed(viewPager.currentItem) {
                                 dismissDialog()
                                 if (it) {
                                     activity.baseConfig.lastRenameUsed = viewPager.currentItem

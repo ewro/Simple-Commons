@@ -1,11 +1,10 @@
 package com.simplemobiletools.commons.extensions
 
 import android.app.Application
-import com.simplemobiletools.commons.helpers.isNougatPlus
 import java.util.*
 
 fun Application.checkUseEnglish() {
-    if (baseConfig.useEnglish && !isNougatPlus()) {
+    if (baseConfig.useEnglish) {
         val conf = resources.configuration
         conf.locale = Locale.ENGLISH
         resources.updateConfiguration(conf, resources.displayMetrics)

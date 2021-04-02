@@ -2,25 +2,23 @@ package com.simplemobiletools.commons.dialogs
 
 import android.app.Activity
 import android.content.res.Resources
-import android.net.Uri
+import android.media.ExifInterface
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.exifinterface.media.ExifInterface
 import com.simplemobiletools.commons.R
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.simplemobiletools.commons.helpers.isNougatPlus
 import com.simplemobiletools.commons.helpers.sumByInt
 import com.simplemobiletools.commons.helpers.sumByLong
 import com.simplemobiletools.commons.models.FileDirItem
 import kotlinx.android.synthetic.main.dialog_properties.view.*
 import kotlinx.android.synthetic.main.property_item.view.*
 import java.io.File
+import java.io.FileNotFoundException
 import java.util.*
 
 class PropertiesDialog() {
@@ -37,7 +35,7 @@ class PropertiesDialog() {
      * @param countHiddenItems toggle determining if we will count hidden files themselves and their sizes (reasonable only at directory properties)
      */
     constructor(activity: Activity, path: String, countHiddenItems: Boolean = false) : this() {
-        if (!activity.getDoesFilePathExist(path) && !path.startsWith("content://")) {
+        if (!File(path).exists()) {
             activity.toast(String.format(activity.getString(R.string.source_file_doesnt_exist), path))
             return
         }
@@ -46,16 +44,16 @@ class PropertiesDialog() {
         mInflater = LayoutInflater.from(activity)
         mResources = activity.resources
         val view = mInflater.inflate(R.layout.dialog_properties, null)
-        mPropertyView = view.properties_holder!!
+        mPropertyView = view.properties_holder
 
-        val fileDirItem = FileDirItem(path, path.getFilenameFromPath(), activity.getIsPathDirectory(path))
+        val fileDirItem = FileDirItem(path, path.getFilenameFromPath(), File(path).isDirectory, 0, 0, File(path).lastModified())
         addProperty(R.string.name, fileDirItem.name)
         addProperty(R.string.path, fileDirItem.getParentPath())
         addProperty(R.string.size, "…", R.id.properties_size)
 
         ensureBackgroundThread {
-            val fileCount = fileDirItem.getProperFileCount(activity, countHiddenItems)
-            val size = fileDirItem.getProperSize(activity, countHiddenItems).formatSize()
+            val fileCount = fileDirItem.getProperFileCount(countHiddenItems)
+            val size = fileDirItem.getProperSize(countHiddenItems).formatSize()
             activity.runOnUiThread {
                 view.findViewById<TextView>(R.id.properties_size).property_value.text = size
 
@@ -75,22 +73,11 @@ class PropertiesDialog() {
                         val dateModified = cursor.getLongValue(MediaStore.Images.Media.DATE_MODIFIED) * 1000L
                         updateLastModified(activity, view, dateModified)
                     } else {
-                        updateLastModified(activity, view, fileDirItem.getLastModified(activity))
+                        updateLastModified(activity, view, fileDirItem.modified)
                     }
                 }
 
-                val exif = if (isNougatPlus() && activity.isPathOnOTG(fileDirItem.path)) {
-                    ExifInterface((activity as BaseSimpleActivity).getFileInputStreamSync(fileDirItem.path)!!)
-                } else if (isNougatPlus() && fileDirItem.path.startsWith("content://")) {
-                    try {
-                        ExifInterface(activity.contentResolver.openInputStream(Uri.parse(fileDirItem.path))!!)
-                    } catch (e: Exception) {
-                        return@ensureBackgroundThread
-                    }
-                } else {
-                    ExifInterface(fileDirItem.path)
-                }
-
+                val exif = ExifInterface(fileDirItem.path)
                 val latLon = FloatArray(2)
                 if (exif.getLatLong(latLon)) {
                     activity.runOnUiThread {
@@ -109,53 +96,43 @@ class PropertiesDialog() {
 
         when {
             fileDirItem.isDirectory -> {
-                addProperty(R.string.direct_children_count, fileDirItem.getDirectChildrenCount(activity, countHiddenItems).toString())
+                addProperty(R.string.direct_children_count, fileDirItem.getDirectChildrenCount(countHiddenItems).toString())
                 addProperty(R.string.files_count, "…", R.id.properties_file_count)
             }
             fileDirItem.path.isImageSlow() -> {
                 fileDirItem.getResolution(activity)?.let { addProperty(R.string.resolution, it.formatAsResolution()) }
             }
             fileDirItem.path.isAudioSlow() -> {
-                fileDirItem.getDuration(activity)?.let { addProperty(R.string.duration, it) }
-                fileDirItem.getTitle(activity)?.let { addProperty(R.string.song_title, it) }
-                fileDirItem.getArtist(activity)?.let { addProperty(R.string.artist, it) }
-                fileDirItem.getAlbum(activity)?.let { addProperty(R.string.album, it) }
+                fileDirItem.getDuration()?.let { addProperty(R.string.duration, it) }
+                fileDirItem.getSongTitle()?.let { addProperty(R.string.song_title, it) }
+                fileDirItem.getArtist()?.let { addProperty(R.string.artist, it) }
+                fileDirItem.getAlbum()?.let { addProperty(R.string.album, it) }
             }
             fileDirItem.path.isVideoSlow() -> {
-                fileDirItem.getDuration(activity)?.let { addProperty(R.string.duration, it) }
+                fileDirItem.getDuration()?.let { addProperty(R.string.duration, it) }
                 fileDirItem.getResolution(activity)?.let { addProperty(R.string.resolution, it.formatAsResolution()) }
-                fileDirItem.getArtist(activity)?.let { addProperty(R.string.artist, it) }
-                fileDirItem.getAlbum(activity)?.let { addProperty(R.string.album, it) }
+                fileDirItem.getArtist()?.let { addProperty(R.string.artist, it) }
+                fileDirItem.getAlbum()?.let { addProperty(R.string.album, it) }
             }
         }
 
         if (fileDirItem.isDirectory) {
-            addProperty(R.string.last_modified, fileDirItem.getLastModified(activity).formatDate(activity))
+            addProperty(R.string.last_modified, fileDirItem.modified.formatDate(activity))
         } else {
             addProperty(R.string.last_modified, "…", R.id.properties_last_modified)
             try {
                 addExifProperties(path, activity)
-            } catch (e: Exception) {
-                activity.showErrorToast(e)
+            } catch (e: FileNotFoundException) {
+                activity.toast(R.string.unknown_error_occurred)
                 return
-            }
-
-            if (activity.baseConfig.appId.removeSuffix(".debug") == "com.simplemobiletools.filemanager.pro") {
-                addProperty(R.string.md5, "…", R.id.properties_md5)
-                ensureBackgroundThread {
-                    val md5 = File(path).md5()
-                    activity.runOnUiThread {
-                        view.findViewById<TextView>(R.id.properties_md5).property_value.text = md5
-                    }
-                }
             }
         }
 
         AlertDialog.Builder(activity)
-            .setPositiveButton(R.string.ok, null)
-            .create().apply {
-                activity.setupDialogStuff(view, this, R.string.properties)
-            }
+                .setPositiveButton(R.string.ok, null)
+                .create().apply {
+                    activity.setupDialogStuff(view, this, R.string.properties)
+                }
     }
 
     private fun updateLastModified(activity: Activity, view: View, timestamp: Long) {
@@ -180,7 +157,7 @@ class PropertiesDialog() {
 
         val fileDirItems = ArrayList<FileDirItem>(paths.size)
         paths.forEach {
-            val fileDirItem = FileDirItem(it, it.getFilenameFromPath(), activity.getIsPathDirectory(it))
+            val fileDirItem = FileDirItem(it, it.getFilenameFromPath(), File(it).isDirectory, 0, 0, File(it).lastModified())
             fileDirItems.add(fileDirItem)
         }
 
@@ -195,8 +172,8 @@ class PropertiesDialog() {
         addProperty(R.string.files_count, "…", R.id.properties_file_count)
 
         ensureBackgroundThread {
-            val fileCount = fileDirItems.sumByInt { it.getProperFileCount(activity, countHiddenItems) }
-            val size = fileDirItems.sumByLong { it.getProperSize(activity, countHiddenItems) }.formatSize()
+            val fileCount = fileDirItems.sumByInt { it.getProperFileCount(countHiddenItems) }
+            val size = fileDirItems.sumByLong { it.getProperSize(countHiddenItems) }.formatSize()
             activity.runOnUiThread {
                 view.findViewById<TextView>(R.id.properties_size).property_value.text = size
                 view.findViewById<TextView>(R.id.properties_file_count).property_value.text = fileCount.toString()
@@ -204,25 +181,14 @@ class PropertiesDialog() {
         }
 
         AlertDialog.Builder(activity)
-            .setPositiveButton(R.string.ok, null)
-            .create().apply {
-                activity.setupDialogStuff(view, this, R.string.properties)
-            }
+                .setPositiveButton(R.string.ok, null)
+                .create().apply {
+                    activity.setupDialogStuff(view, this, R.string.properties)
+                }
     }
 
     private fun addExifProperties(path: String, activity: Activity) {
-        val exif = if (isNougatPlus() && activity.isPathOnOTG(path)) {
-            ExifInterface((activity as BaseSimpleActivity).getFileInputStreamSync(path)!!)
-        } else if (isNougatPlus() && path.startsWith("content://")) {
-            try {
-                ExifInterface(activity.contentResolver.openInputStream(Uri.parse(path))!!)
-            } catch (e: Exception) {
-                return
-            }
-        } else {
-            ExifInterface(path)
-        }
-
+        val exif = ExifInterface(path)
         val dateTaken = exif.getExifDateTaken(activity)
         if (dateTaken.isNotEmpty()) {
             addProperty(R.string.date_taken, dateTaken)
@@ -253,27 +219,17 @@ class PropertiesDialog() {
     }
 
     private fun addProperty(labelId: Int, value: String?, viewId: Int = 0) {
-        if (value == null) {
+        if (value == null)
             return
-        }
 
         mInflater.inflate(R.layout.property_item, mPropertyView, false).apply {
-            property_value.setTextColor(mActivity.baseConfig.textColor)
-            property_label.setTextColor(mActivity.baseConfig.textColor)
-
             property_label.text = mResources.getString(labelId)
             property_value.text = value
             mPropertyView.properties_holder.addView(this)
 
-            setOnLongClickListener {
+            property_value.setOnLongClickListener {
                 mActivity.copyToClipboard(property_value.value)
                 true
-            }
-
-            if (labelId == R.string.gps_coordinates) {
-                setOnClickListener {
-                    mActivity.showLocationOnMap(value)
-                }
             }
 
             if (viewId != 0) {

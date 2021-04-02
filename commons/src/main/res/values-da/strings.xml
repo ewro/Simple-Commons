@@ -10,10 +10,7 @@
     <string name="edit_with">Rediger med</string>
     <string name="no_app_found">Der blev ikke fundet en gyldig app</string>
     <string name="set_as">Anvend som</string>
-    <string name="copy_to_clipboard">Kopier til udklipsholder</string>
-    <string name="copy_number_to_clipboard">Kopier nummeret til udklipsholderen</string>
-    <string name="value_copied_to_clipboard">Værdi kopieret til udklipsholderen</string>
-    <string name="dial_number">Opkaldsnummer</string>
+    <string name="value_copied_to_clipboard">Værdi kopieret til udklipsholder</string>
     <string name="unknown">Ukendt</string>
     <string name="always">Altid</string>
     <string name="never">Aldrig</string>
@@ -28,34 +25,6 @@
     <string name="download">Download</string>
     <string name="notification">Underretning</string>
     <string name="email">E-mail</string>
-    <string name="previous">Forrige</string>
-    <string name="playpause">Afspil / Pause</string>
-    <string name="next">Næste</string>
-    <string name="number">Nummer</string>
-    <string name="no_contacts_found">Ingen kontakter fundet</string>
-    <string name="request_the_required_permissions">Anmod om de krævede tilladelser</string>
-    <string name="no_access_to_contacts">Appen kunne ikke tilgå dine kontakter</string>
-    <string name="insert_text_here">Indsæt tekst her</string>
-
-    <!-- View types -->
-    <string name="change_view_type">Skift visning</string>
-    <string name="grid">Gitter</string>
-    <string name="list">Liste</string>
-    <string name="increase_column_count">Flere kolonner</string>
-    <string name="reduce_column_count">Færre kolonner</string>
-    <string name="change_cover_image">Skift cover-billede</string>
-    <string name="select_photo">Vælg billede</string>
-
-    <!-- Blocked numbers -->
-    <string name="manage_blocked_numbers">Administrér blokerede numre</string>
-    <string name="not_blocking_anyone">Du blokerer ikke nogen</string>
-    <string name="add_a_blocked_number">Tilføj et blokeret nummer</string>
-    <string name="block_number">Blokér nummer</string>
-    <string name="block_numbers">Blokér numre</string>
-    <string name="blocked_numbers">Blokerede numre</string>
-    <string name="must_make_default_dialer">Du skal gøre denne app til standardopkaldsappen for at gøre brug af blokerede numre.</string>
-    <string name="set_as_default">Gør til standard</string>
-    <string name="block_confirmation">Er du sikker på at du vil blokere \"%s\"?</string>
 
     <!-- Favorites -->
     <string name="favorites">Bogmærker</string>
@@ -98,7 +67,7 @@
     <string name="simple_renaming">Simple omdøbning</string>
     <string name="pattern_renaming">Mønster</string>
     <string name="string_to_add">Tekststreng der skal tilføjes</string>
-    <string name="rename_date_time_pattern">%Y - år\n%M - måned\n%D - dag\n%h - time\n%m - minut\n%s - sekund\n%i - tal stigende fra 1</string>
+    <string name="rename_date_time_pattern">%Y - år\n%M - måned\n%D - dag\n%h - time\n%m - minut\n%s - sekund</string>
 
     <!-- Copy / Move -->
     <string name="copy">Kopier</string>
@@ -173,12 +142,6 @@
         <item quantity="other">Sletter %d elementer</item>
     </plurals>
 
-    <!-- Are you sure you want to delete 5 contacts? -->
-    <plurals name="delete_contacts">
-        <item quantity="one">%d kontakt</item>
-        <item quantity="other">%d kontakter</item>
-    </plurals>
-
     <!-- Storages -->
     <string name="select_storage">Vælg lager</string>
     <string name="internal">Intern</string>
@@ -213,8 +176,6 @@
     <string name="background_color">Baggrundsfarve</string>
     <string name="text_color">Tekstfarve</string>
     <string name="primary_color">Primær farve</string>
-    <string name="accent_color_white">Effektfarve på det hvide udseende</string>
-    <string name="accent_color_black_and_white">Effektfarve på det sorte &amp; hvide udseende</string>
     <string name="foreground_color">Forgrundsfarve</string>
     <string name="app_icon_color">Farve til appens ikon</string>
     <string name="bottom_navigation_bar_color">Farve på nederste navigationslinje</string>
@@ -233,7 +194,6 @@
     <string name="app_icon_color_warning">ADVARSEL: Ikke alle app-launchers kan håndtere tilpasning af ikonfarve. Hvis et ikon skulle forsvinde kan du prøve at åbne appen via Google Play eller en widget.
        Når appen er åben kan du sætte farven til standardfarven #F57C00 igen. I værste fald må du geninstallere appen.</string>
     <string name="share_colors_success">Farverne er ændret. Et nyt udseende kaldet \"Tilpasset\" er tilføjet, brug det ved opdatering af alle app-farver fremover.</string>
-    <string name="shared_theme_note">Bemærk at selv om du bruger appens Pro-version, skal du af tekniske årsager stadig have Simple Thank You. Den tager sig af farvesynkronisering.</string>
     <string name="purchase_thank_you">
         <![CDATA[
             Køb <a href="https://play.google.com/store/apps/details?id=com.simplemobiletools.thankyou">Simple Thank You</a> for at låse denne funktion op og understøtte appens udvikling. Tak!
@@ -245,7 +205,6 @@
     <string name="dark_theme">Mørk</string>
     <string name="solarized">Solarized</string>
     <string name="dark_red">Mørkerød</string>
-    <string name="white">Hvid</string>
     <string name="black_white">Sort &amp; hvid</string>
     <string name="custom">Tilpasset</string>
     <string name="shared">Gemt</string>
@@ -261,7 +220,6 @@
     <string name="share">Del</string>
     <string name="share_via">Del via</string>
     <string name="select_all">Vælg alle</string>
-    <string name="select_text">Vælg tekst</string>
     <string name="hide">Skjul</string>
     <string name="unhide">Vis</string>
     <string name="hide_folder">Skjul mappe</string>
@@ -274,11 +232,6 @@
     <string name="redo">Gentag</string>
     <string name="print">Udskriv</string>
     <string name="create_shortcut">Opret genvej</string>
-    <string name="add_number_to_contact">Føj nummer til kontakt</string>
-    <string name="view_contact_details">Vis kontaktoplysninger</string>
-    <string name="call_from_sim_1">Call from SIM 1</string>
-    <string name="call_from_sim_2">Call from SIM 2</string>
-    <string name="toggle_filename">Skift filnavnets synlighed</string>
 
     <!-- Sorting -->
     <string name="sort_by">Sorter efter</string>
@@ -295,12 +248,6 @@
     <string name="descending">Faldende</string>
     <string name="use_for_this_folder">Anvend kun på denne mappe</string>
     <string name="sort_numeric_parts">Sorter nummerisk indhold efter værdi</string>
-    <string name="first_name">Fornavn</string>
-    <string name="middle_name">Mellemnavn</string>
-    <string name="surname">Efternavn</string>
-    <string name="full_name">Fulde navn</string>
-    <string name="use_custom_sorting">Brug brugerdefineret rækkefølge</string>
-    <string name="change_order">Skift rækkefølge</string>
 
     <!-- Confirmation dialog -->
     <string name="proceed_with_deletion">Er du sikker på at du vil fortsætte med at slette?</string>
@@ -339,13 +286,12 @@
     <string name="fingerprint_setup_successfully">Beskyttelsen er oprettet. Geninstaller appen hvis du har problemer med at gendanne den.</string>
     <string name="lock_folder">Lås mappe</string>
     <string name="unlock_folder">Lås mappe op</string>
-    <string name="lock_folder_notice">Denne beskyttelse virker kun i denne app, den er ikke beregnet som erstatning for rigtig kryptering af mapper på systemniveau.</string>
+    <string name="lock_folder_notice">This protection works in this app only, it is not supposed to replace a real systemwide folder encryption.</string>
 
     <!-- Times -->
     <string name="yesterday">I går</string>
     <string name="today">I dag</string>
     <string name="tomorrow">I morgen</string>
-    <string name="hide_year">Skjul årstal</string>
     <string name="seconds_raw">sekunder</string>
     <string name="minutes_raw">minutter</string>
     <string name="hours_raw">timer</string>
@@ -487,16 +433,12 @@
     <string name="your_sounds">Dine lyde</string>
     <string name="add_new_sound">Tilføj en ny lyd</string>
     <string name="no_sound">Ingen lyd</string>
-    <string name="during_day_at_hh_mm">I løbet af dagen kl. hh:mm</string>
-    <string name="during_day_at">I løbet af dagen kl. %02d:%02d</string>
 
     <!-- Settings -->
     <string name="settings">Indstillinger</string>
     <string name="purchase_simple_thank_you">Køb Simple Thank You</string>
     <string name="customize_colors">Rediger farver</string>
-    <string name="customize_colors_locked">Rediger farver (Låst)</string>
     <string name="customize_widget_colors">Rediger widget-farver</string>
-    <string name="customize_notifications">Tilpas notifikationer</string>
     <string name="use_english_language">Anvend engelsk sprog</string>
     <string name="show_hidden_items">Vis skjulte elementer</string>
     <string name="font_size">Skriftstørrelse</string>
@@ -527,8 +469,6 @@
     <string name="import_settings">Importer indstillinger</string>
     <string name="settings_exported_successfully">Indstillinger eksporteret</string>
     <string name="settings_imported_successfully">Indstillinger importeret</string>
-    <string name="start_name_with_surname">Start navn med efternavn</string>
-    <string name="clear_cache">Ryd cache</string>
 
     <!-- Setting sections -->
     <string name="visibility">Synlighed</string>
@@ -540,14 +480,6 @@
     <string name="startup">Opstart</string>
     <string name="text">Tekst</string>
     <string name="migrating">Migrerer</string>
-
-    <!-- Default tabs to open -->
-    <string name="default_tab_to_open">Tab to open at app start</string>
-    <string name="contacts_tab">Kontakter</string>
-    <string name="favorites_tab">Foretrukne</string>
-    <string name="call_history_tab">Opkaldshistorik</string>
-    <string name="groups_tab">Grupper</string>
-    <string name="last_used_tab">Senest brugte</string>
 
     <!-- Recycle Bin -->
     <string name="restore_this_file">Gendan denne fil</string>
@@ -650,7 +582,6 @@
     <string name="email_label">Send feedback og forslag til</string>
     <string name="upgrade_to_pro">Opgrader til Pro</string>
     <string name="more_apps_underlined"><u>Flere apps</u></string>
-    <string name="more_apps_from_us_underlined"><u>Flere apps fra os</u></string>
     <string name="third_party_licences_underlined"><u>3.-parts licencer</u></string>
     <string name="invite_friends_underlined"><u>Inviter venner</u></string>
     <string name="share_text">Hej, se %1$s på %2$s</string>
@@ -674,13 +605,8 @@
     <string name="purchase">Køb</string>
     <string name="update_thank_you">Opdater venligst Simple Thank You til den seneste version</string>
     <string name="before_asking_question_read_faq">Inden du stiller et spørgsmål bedes du først tjekke appens indstillinger og læse de \"Ofte stillede spørgsmål\", måske finder du svaret der.</string>
-    <string name="before_rate_read_faq">Tjek appens indstillinger og læs vores ofte stillede spørgsmål inden du vurderer os. Har du nogen problemer, kan du måske finde en løsning der.</string>
-    <string name="make_sure_latest">Sørg også for at du bruger den seneste version af appen.</string>
     <string name="read_it">Læs det</string>
-    <string name="read_faq">Read OSS</string>
     <string name="rate_us_prompt">Hej\n\nDet ser ud til at du har brugt denne app et godt stykke tid, og det er vi virkelig glade for.\n\nHvis vi til gengæld må bede om en tjeneste, vil vi sætte stor pris på din vurdering på Google Play. Det ville være en kæmpe hjælp.\n\nUanset hvad du beslutter dig for, vil du ikke se denne besked igen.\n\nPå forhånd tak!</string>
-    <string name="rate_our_app">Vurder vores app :)</string>
-    <string name="thank_you">Tak skal du have</string>
 
     <!-- New app (do not translate anything on the 4th line) -->
     <string name="new_app">
@@ -688,46 +614,10 @@
             Hej<br><br>
             - synes lige du skulle vide at der er kommet en ny app:<br><br>
             <a href="%1$s">%2$s</a><br><br>
-            <a href="%3$s">%4$s</a><br><br>
-            <a href="%5$s">%6$s</a><br><br>
             Du kan downloade den med et klik på titlen.<br><br>
             Tak
         ]]>
     </string>
-
-    <string name="simple_app_launcher">Simple App Launcher</string>
-    <string name="simple_calculator">Simple Calculator</string>
-    <string name="simple_calendar">Simple Calendar</string>
-    <string name="simple_camera">Simple Camera</string>
-    <string name="simple_clock">Simple Clock</string>
-    <string name="simple_contacts">Simple Contacts</string>
-    <string name="simple_dialer">Simple Dialer</string>
-    <string name="simple_draw">Simple Draw</string>
-    <string name="simple_file_manager">Simple File Manager</string>
-    <string name="simple_flashlight">Simple Flashlight</string>
-    <string name="simple_gallery">Simple Gallery</string>
-    <string name="simple_music_player">Simple Music Player</string>
-    <string name="simple_notes">Simple Notes</string>
-    <string name="simple_sms_messenger">Simple SMS Messenger</string>
-    <string name="simple_thank_you">Simple Thank You</string>
-    <string name="simple_voice_recorder">Simple Voice Recorder</string>
-
-    <string name="app_launcher_short">App Launcher</string>
-    <string name="calculator_short">Lommeregner</string>
-    <string name="calendar_short">Kalender</string>
-    <string name="camera_short">Kamera</string>
-    <string name="clock_short">Ur</string>
-    <string name="contacts_short">Kontakter</string>
-    <string name="dialer_short">Dialer</string>
-    <string name="draw_short">Tegning</string>
-    <string name="file_manager_short">Filhåndtering</string>
-    <string name="flashlight_short">Blitz</string>
-    <string name="gallery_short">Galleri</string>
-    <string name="music_player_short">Musikafspiller</string>
-    <string name="notes_short">Noter</string>
-    <string name="sms_messenger_short">SMS Messenger</string>
-    <string name="thank_you_short">Tak skal du have</string>
-    <string name="voice_recorder_short">Lydoptager</string>
 
     <string name="sideloaded_app">
         <![CDATA[
@@ -758,53 +648,6 @@
     <string name="faq_8_text_commons">Da din version af appen ikke opdateres længere, kan den indeholde fejl der aldrig bliver rettet. Der vil heller ikke komme nye funktioner til den. Du kan købe Pro-versionen på Google Play for et lille beløb.
         Det er en engangsinvestering, har du betalt een gang skal du aldrig gøre det igen, heller ikke hvis du skifter mobil eller tablet. Kan du ikke lide Pro-versionen, kan du afinstallere den indenfor nogle få timer og du vil automatisk få dine penge tilbage.
         Vil du på et senere tidspunkt have pengene refunderet, skal du blot sende en mail til hello@simplemobiletools.com, så klarer vi det.</string>
-    <string name="faq_9_title_commons">How can I select multiple items at once?</string>
-    <string name="faq_9_text_commons">There are multiple ways of doing that. The first one is starting the selection mode by long pressing one item, then short clicking on others to select them. The second way is similar to selecting items on PCs with a mouse,
-        just start the selection mode by long pressing one item, then with your finger still down drag it across other items for selecting. The third way of selecting multiple items is long pressing one item, then long pressing another one and everything in between gets selected. If you
-        want to select all items, just long press one item, then click at the selected item counter at the top left corner. That will select or unselect all everything.</string>
-    <string name="faq_10_title_commons">I have purchased the app, but I cannot download it on another device.</string>
-    <string name="faq_10_text_commons">Try clearing your Google Play app cache and restarting your device. It is some Google Play glitch, not really related to the app itself.</string>
-
-    <!-- Pro comparison (shown in the deprecated free apps) -->
-    <string name="why_upgrade">Få Pro-versionen nu!</string>
-    <string name="why_upgrade_basic_version">Basic</string>
-    <string name="why_upgrade_pro_version">Pro</string>
-    <string name="why_upgrade_no_ads">Ingen reklamer</string>
-    <string name="why_upgrade_no_internet_access">Ingen internetadgang</string>
-    <string name="why_upgrade_footer">+ Fuld tilfredshed eller pengene tilbage</string>
-    <string name="why_upgrade_improved_design">Forbedret design</string>
-
-    <!-- Gallery Pro -->
-    <string name="why_upgrade_advanced_photo_editor">Avanceret fotoredigering</string>
-    <string name="why_upgrade_heic_support">HEIC/HEIF filunderstøttelse</string>
-    <string name="why_upgrade_batch_renaming">Avanceret masseomdøbning af filer</string>
-    <string name="why_upgrade_folder_locking">Individuel låsning af mapper</string>
-    <string name="why_upgrade_printing_support">Udskrivningssupport</string>
-
-    <!-- Calendar Pro -->
-    <string name="why_upgrade_time_zone_support">Tidszone-support</string>
-    <string name="why_upgrade_attendees_emails">Deltager- og mail-påmindelser</string>
-    <string name="why_upgrade_easy_event_importing">Nem import af begivenheder</string>
-    <string name="why_upgrade_new_widgets">Nye widgets</string>
-
-    <!-- Contacts Pro -->
-    <string name="why_upgrade_duplicate_contact_merging">Forbedret sammenfletning af duplikerede kontakter</string>
-    <string name="why_upgrade_font_size_customization">Skræddersyet skriftstørrelse</string>
-    <string name="why_upgrade_private_contact_sharing">Mulighed for deling af private kontakter med dine apps</string>
-    <string name="why_upgrade_customizable_contact_ringtones">Kontaktspecifikke ringetoner</string>
-
-    <!-- Notes Pro -->
-    <string name="why_upgrade_checklists">Tjeklister</string>
-    <string name="why_upgrade_different_note_per_widget">Forskellig note og farver per widget</string>
-
-    <!-- File Manager Pro -->
-    <string name="why_upgrade_date_and_time_format">Tilpasning af format på dato og tid</string>
-    <string name="why_upgrade_shortcuts">Genveje til startside</string>
-    <string name="why_upgrade_file_compression">Understøtter pakning af filer</string>
-
-    <!-- Draw Pro -->
-    <string name="why_upgrade_background_color_customization">Selvvalgt baggrundsfarve</string>
-    <string name="why_upgrade_file_importing">Understøtter filimport</string>
 
     <!-- License -->
     <string name="notice">Denne app bruger følgende 3.-parts biblioteker der gør at mit liv bliver lidt enklere. Tak.</string>
@@ -833,16 +676,8 @@
     <string name="sanselan_title">Apache Sanselan (reading image metadata)</string>
     <string name="filters_title">Android Photo Filters (image filters)</string>
     <string name="gesture_views_title">Gesture Views (zoomable images)</string>
-    <string name="indicator_fast_scroll_title">Indicator Fast Scroll (letters on scrollbar)</string>
-    <string name="event_bus_title">Event Bus (intern kommunikation i appen)</string>
-    <string name="audio_record_view_title">Audio Record View (audio-visualisering)</string>
-    <string name="sms_mms_title">SMS MMS (håndtering af SMS og MMS)</string>
-    <string name="apng_title">APNG Android (animated WebP support)</string>
 
     <!-- Google Play listing -->
     <string name="deprecated_app">FORÆLDET: Denne version af appen vedligeholdes ikke længere, skift til Pro-versionen her https://play.google.com/store/apps/details?id=com.simplemobiletools.xxx.pro</string>
     <string name="pro_app_refund">Husk at hvis du afinstallerer en betalt app indenfor 2 timer, får du automatisk pengene tilbage. Vil du have refunderet beløbet på et senere tidspunkt, så send en mail til hello@simplemobiletools.com . På den måde kan du prøvekøre appen uden omkostninger :)</string>
-
-    <!-- Description of our developer profile on Google Play, it can have max 140 characters -->
-    <string name="developer_description">En gruppe simple, open source apps til Android med widgets, der kan tilpasses, uden reklamer og unødvendige tilladelser.</string>
 </resources>

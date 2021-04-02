@@ -1,11 +1,8 @@
 package com.simplemobiletools.commons.extensions
 
-import android.content.Context
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.FileDirItem
 import java.io.File
-import java.security.MessageDigest
-import java.util.*
 
 fun File.isMediaFile() = absolutePath.isMediaFile()
 fun File.isGif() = absolutePath.endsWith(".gif", true)
@@ -38,7 +35,7 @@ private fun getDirectorySize(dir: File, countHiddenItems: Boolean): Long {
             for (i in files.indices) {
                 if (files[i].isDirectory) {
                     size += getDirectorySize(files[i], countHiddenItems)
-                } else if (!files[i].name.startsWith('.') && !dir.name.startsWith('.') || countHiddenItems) {
+                } else if (!files[i].isHidden && !dir.isHidden || countHiddenItems) {
                     size += files[i].length()
                 }
             }
@@ -66,7 +63,7 @@ private fun getDirectoryFileCount(dir: File, countHiddenItems: Boolean): Int {
                 if (file.isDirectory) {
                     count++
                     count += getDirectoryFileCount(file, countHiddenItems)
-                } else if (!file.name.startsWith('.') || countHiddenItems) {
+                } else if (!file.isHidden || countHiddenItems) {
                     count++
                 }
             }
@@ -75,35 +72,18 @@ private fun getDirectoryFileCount(dir: File, countHiddenItems: Boolean): Int {
     return count
 }
 
-fun File.getDirectChildrenCount(countHiddenItems: Boolean) = listFiles()?.filter { if (countHiddenItems) true else !it.name.startsWith('.') }?.size
-    ?: 0
+fun File.getDirectChildrenCount(countHiddenItems: Boolean) = listFiles()?.filter { if (countHiddenItems) true else !it.isHidden }?.size ?: 0
 
-fun File.toFileDirItem(context: Context) = FileDirItem(absolutePath, name, context.getIsPathDirectory(absolutePath), 0, length(), lastModified())
+fun File.toFileDirItem() = FileDirItem(absolutePath, name, File(absolutePath).isDirectory, 0, length(), lastModified())
 
-fun File.containsNoMedia(): Boolean {
-    return if (!isDirectory) {
-        false
-    } else {
-        File(this, NOMEDIA).exists()
-    }
-}
+fun File.containsNoMedia() = isDirectory && File(this, NOMEDIA).exists()
 
-fun File.doesThisOrParentHaveNoMedia(folderNoMediaStatuses: HashMap<String, Boolean>, callback: ((path: String, hasNoMedia: Boolean) -> Unit)?): Boolean {
+fun File.doesThisOrParentHaveNoMedia(): Boolean {
     var curFile = this
     while (true) {
-        val noMediaPath = "${curFile.absolutePath}/$NOMEDIA"
-        val hasNoMedia = if (folderNoMediaStatuses.keys.contains(noMediaPath)) {
-            folderNoMediaStatuses[noMediaPath]!!
-        } else {
-            val contains = curFile.containsNoMedia()
-            callback?.invoke(curFile.absolutePath, contains)
-            contains
-        }
-
-        if (hasNoMedia) {
+        if (curFile.containsNoMedia()) {
             return true
         }
-
         curFile = curFile.parentFile ?: break
         if (curFile.absolutePath == "/") {
             break
@@ -111,33 +91,3 @@ fun File.doesThisOrParentHaveNoMedia(folderNoMediaStatuses: HashMap<String, Bool
     }
     return false
 }
-
-fun File.doesParentHaveNoMedia(): Boolean {
-    var curFile = parentFile
-    while (true) {
-        if (curFile?.containsNoMedia() == true) {
-            return true
-        }
-        curFile = curFile?.parentFile ?: break
-        if (curFile.absolutePath == "/") {
-            break
-        }
-    }
-    return false
-}
-
-fun File.getDigest(algorithm: String): String {
-    return inputStream().use { fis ->
-        val md = MessageDigest.getInstance(algorithm)
-        val buffer = ByteArray(8192)
-        generateSequence {
-            when (val bytesRead = fis.read(buffer)) {
-                -1 -> null
-                else -> bytesRead
-            }
-        }.forEach { bytesRead -> md.update(buffer, 0, bytesRead) }
-        md.digest().joinToString("") { "%02x".format(it) }
-    }
-}
-
-fun File.md5(): String = this.getDigest(MD5)

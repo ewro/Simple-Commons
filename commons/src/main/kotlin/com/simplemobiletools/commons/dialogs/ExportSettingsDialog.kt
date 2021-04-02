@@ -5,30 +5,18 @@ import com.simplemobiletools.commons.R
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_export_settings.view.*
+import java.io.File
 
-class ExportSettingsDialog(val activity: BaseSimpleActivity, val defaultFilename: String, val hidePath: Boolean,
-                           callback: (path: String, filename: String) -> Unit) {
+class ExportSettingsDialog(val activity: BaseSimpleActivity, val defaultFilename: String, callback: (path: String) -> Unit) {
     init {
-        val lastUsedFolder = activity.baseConfig.lastExportedSettingsFolder
-        var folder = if (lastUsedFolder.isNotEmpty() && activity.getDoesFilePathExist(lastUsedFolder)) {
-            lastUsedFolder
-        } else {
-            activity.internalStoragePath
-        }
-
+        var folder = activity.internalStoragePath
         val view = activity.layoutInflater.inflate(R.layout.dialog_export_settings, null).apply {
             export_settings_filename.setText(defaultFilename)
-
-            if (hidePath) {
-                export_settings_path_label.beGone()
-                export_settings_path.beGone()
-            } else {
-                export_settings_path.text = activity.humanizePath(folder)
-                export_settings_path.setOnClickListener {
-                    FilePickerDialog(activity, folder, false, showFAB = true) {
-                        export_settings_path.text = activity.humanizePath(it)
-                        folder = it
-                    }
+            export_settings_path.text = activity.humanizePath(folder)
+            export_settings_path.setOnClickListener {
+                FilePickerDialog(activity, folder, false, showFAB = true) {
+                    export_settings_path.text = activity.humanizePath(it)
+                    folder = it
                 }
             }
         }
@@ -45,22 +33,20 @@ class ExportSettingsDialog(val activity: BaseSimpleActivity, val defaultFilename
                                 return@setOnClickListener
                             }
 
-                            activity.baseConfig.lastExportedSettingsFile = filename
                             val newPath = "${folder.trimEnd('/')}/$filename"
                             if (!newPath.getFilenameFromPath().isAValidFilename()) {
                                 activity.toast(R.string.filename_invalid_characters)
                                 return@setOnClickListener
                             }
 
-                            activity.baseConfig.lastExportedSettingsFolder = folder
-                            if (!hidePath && activity.getDoesFilePathExist(newPath)) {
+                            if (File(newPath).exists()) {
                                 val title = String.format(activity.getString(R.string.file_already_exists_overwrite), newPath.getFilenameFromPath())
                                 ConfirmationDialog(activity, title) {
-                                    callback(newPath, filename)
+                                    callback(newPath)
                                     dismiss()
                                 }
                             } else {
-                                callback(newPath, filename)
+                                callback(newPath)
                                 dismiss()
                             }
                         }

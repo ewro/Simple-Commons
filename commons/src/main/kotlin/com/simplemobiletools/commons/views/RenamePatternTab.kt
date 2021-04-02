@@ -1,10 +1,10 @@
 package com.simplemobiletools.commons.views
 
 import android.content.Context
+import android.media.ExifInterface
 import android.text.format.DateFormat
 import android.util.AttributeSet
 import android.widget.RelativeLayout
-import androidx.exifinterface.media.ExifInterface
 import com.simplemobiletools.commons.R
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.*
@@ -29,10 +29,9 @@ class RenamePatternTab(context: Context, attrs: AttributeSet) : RelativeLayout(c
     override fun initTab(activity: BaseSimpleActivity, paths: ArrayList<String>) {
         this.activity = activity
         this.paths = paths
-        rename_items_value.setText(activity.baseConfig.lastRenamePatternUsed)
     }
 
-    override fun dialogConfirmed(useMediaFileExtension: Boolean, callback: (success: Boolean) -> Unit) {
+    override fun dialogConfirmed(callback: (success: Boolean) -> Unit) {
         if (ignoreClicks) {
             return
         }
@@ -43,27 +42,21 @@ class RenamePatternTab(context: Context, attrs: AttributeSet) : RelativeLayout(c
             return
         }
 
-        val validPaths = paths.filter { activity?.getDoesFilePathExist(it) == true }
+        val validPaths = paths.filter { File(it).exists() }
         val sdFilePath = validPaths.firstOrNull { activity?.isPathOnSD(it) == true } ?: validPaths.firstOrNull()
         if (sdFilePath == null) {
             activity?.toast(R.string.unknown_error_occurred)
             return
         }
 
-        activity?.baseConfig?.lastRenamePatternUsed = rename_items_value.value
         activity?.handleSAFDialog(sdFilePath) {
-            if (!it) {
-                return@handleSAFDialog
-            }
-
             ignoreClicks = true
-            var currentIncrementalNumber = 1
             var pathsCnt = validPaths.size
-            val numbersCnt = pathsCnt.toString().length
             for (path in validPaths) {
                 val exif = ExifInterface(path)
                 var dateTime = if (isNougatPlus()) {
-                    exif.getAttribute(ExifInterface.TAG_DATETIME_ORIGINAL) ?: exif.getAttribute(ExifInterface.TAG_DATETIME)
+                    exif.getAttribute(ExifInterface.TAG_DATETIME_ORIGINAL)
+                            ?: exif.getAttribute(ExifInterface.TAG_DATETIME)
                 } else {
                     exif.getAttribute(ExifInterface.TAG_DATETIME)
                 }
@@ -74,68 +67,60 @@ class RenamePatternTab(context: Context, attrs: AttributeSet) : RelativeLayout(c
                     dateTime = DateFormat.format("yyyy:MM:dd kk:mm:ss", calendar).toString()
                 }
 
-                try {
-                    val pattern = if (dateTime.substring(4, 5) == "-") "yyyy-MM-dd kk:mm:ss" else "yyyy:MM:dd kk:mm:ss"
-                    val simpleDateFormat = SimpleDateFormat(pattern, Locale.ENGLISH)
+                val simpleDateFormat = SimpleDateFormat("yyyy:MM:dd kk:mm:ss", Locale.ENGLISH)
+                val dt = simpleDateFormat.parse(dateTime)
+                val cal = Calendar.getInstance()
+                cal.time = dt
+                val year = cal.get(Calendar.YEAR).toString()
+                val month = (cal.get(Calendar.MONTH) + 1).ensureTwoDigits()
+                val day = (cal.get(Calendar.DAY_OF_MONTH)).ensureTwoDigits()
+                val hours = (cal.get(Calendar.HOUR_OF_DAY)).ensureTwoDigits()
+                val minutes = (cal.get(Calendar.MINUTE)).ensureTwoDigits()
+                val seconds = (cal.get(Calendar.SECOND)).ensureTwoDigits()
 
-                    val dt = simpleDateFormat.parse(dateTime.replace("T", " "))
-                    val cal = Calendar.getInstance()
-                    cal.time = dt
-                    val year = cal.get(Calendar.YEAR).toString()
-                    val month = (cal.get(Calendar.MONTH) + 1).ensureTwoDigits()
-                    val day = (cal.get(Calendar.DAY_OF_MONTH)).ensureTwoDigits()
-                    val hours = (cal.get(Calendar.HOUR_OF_DAY)).ensureTwoDigits()
-                    val minutes = (cal.get(Calendar.MINUTE)).ensureTwoDigits()
-                    val seconds = (cal.get(Calendar.SECOND)).ensureTwoDigits()
-
-                    var newName = rename_items_value.value
+                var newName = rename_items_value.value
                         .replace("%Y", year, false)
                         .replace("%M", month, false)
                         .replace("%D", day, false)
                         .replace("%h", hours, false)
                         .replace("%m", minutes, false)
                         .replace("%s", seconds, false)
-                        .replace("%i", String.format("%0${numbersCnt}d", currentIncrementalNumber))
 
-                    if (newName.isEmpty()) {
-                        continue
+                if (newName.isEmpty()) {
+                    continue
+                }
+
+                if (!newName.contains(".") && path.contains(".")) {
+                    val extension = path.substringAfterLast(".")
+                    newName += ".$extension"
+                }
+
+                var newPath = "${path.getParentPath()}/$newName"
+
+                var currentIndex = 0
+                while (File(newPath).exists()) {
+                    currentIndex++
+                    var extension = ""
+                    val name = if (newName.contains(".")) {
+                        extension = ".${newName.substringAfterLast(".")}"
+                        newName.substringBeforeLast(".")
+                    } else {
+                        newName
                     }
 
-                    if ((!newName.contains(".") && path.contains(".")) || (useMediaFileExtension && !".${newName.substringAfterLast(".")}".isMediaFile())) {
-                        val extension = path.substringAfterLast(".")
-                        newName += ".$extension"
-                    }
+                    newPath = "${path.getParentPath()}/$name~$currentIndex$extension"
+                }
 
-                    var newPath = "${path.getParentPath()}/$newName"
-
-                    var currentIndex = 0
-                    while (activity?.getDoesFilePathExist(newPath) == true) {
-                        currentIndex++
-                        var extension = ""
-                        val name = if (newName.contains(".")) {
-                            extension = ".${newName.substringAfterLast(".")}"
-                            newName.substringBeforeLast(".")
-                        } else {
-                            newName
+                activity?.renameFile(path, newPath) {
+                    if (it) {
+                        pathsCnt--
+                        if (pathsCnt == 0) {
+                            callback(true)
                         }
-
-                        newPath = "${path.getParentPath()}/$name~$currentIndex$extension"
+                    } else {
+                        ignoreClicks = false
+                        activity?.toast(R.string.unknown_error_occurred)
                     }
-
-                    currentIncrementalNumber++
-                    activity?.renameFile(path, newPath) {
-                        if (it) {
-                            pathsCnt--
-                            if (pathsCnt == 0) {
-                                callback(true)
-                            }
-                        } else {
-                            ignoreClicks = false
-                            activity?.toast(R.string.unknown_error_occurred)
-                        }
-                    }
-                } catch (e: Exception) {
-                    activity?.showErrorToast(e)
                 }
             }
         }

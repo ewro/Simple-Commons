@@ -10,10 +10,7 @@
     <string name="edit_with">Szerkesztés ezzel</string>
     <string name="no_app_found">Nem található érvényes alkalmazás</string>
     <string name="set_as">Beállítás ennek</string>
-    <string name="copy_to_clipboard">Copy to clipboard</string>
-    <string name="copy_number_to_clipboard">Copy number to clipboard</string>
     <string name="value_copied_to_clipboard">Érték másolva a vágólapra</string>
-    <string name="dial_number">Dial number</string>
     <string name="unknown">Ismeretlen</string>
     <string name="always">Mindig</string>
     <string name="never">Soha</string>
@@ -28,34 +25,6 @@
     <string name="download">Letöltés</string>
     <string name="notification">Értesítés</string>
     <string name="email">Email</string>
-    <string name="previous">Előző</string>
-    <string name="playpause">Lejátszás/szüneteltetés</string>
-    <string name="next">Következő</string>
-    <string name="number">Telefonszám</string>
-    <string name="no_contacts_found">No contacts found</string>
-    <string name="request_the_required_permissions">A kívánt jogosultságok igénylése</string>
-    <string name="no_access_to_contacts">The app could not access your contacts</string>
-    <string name="insert_text_here">Insert text here</string>
-
-    <!-- View types -->
-    <string name="change_view_type">Nézet típus változtatása</string>
-    <string name="grid">Rács</string>
-    <string name="list">Lista</string>
-    <string name="increase_column_count">Növelje az oszlopok számát</string>
-    <string name="reduce_column_count">Csökkentse az oszlopok számát</string>
-    <string name="change_cover_image">Borítókép változtatása</string>
-    <string name="select_photo">Válasszon fotót</string>
-
-    <!-- Blocked numbers -->
-    <string name="manage_blocked_numbers">Zárolt telefonszámok kezelése</string>
-    <string name="not_blocking_anyone">Nincs még zárolt szám.</string>
-    <string name="add_a_blocked_number">Zárolt telefonszám hozzáadása</string>
-    <string name="block_number">Telefonszám zárolása</string>
-    <string name="block_numbers">Telefonszámok zárolása</string>
-    <string name="blocked_numbers">Zárolt telefonszámok</string>
-    <string name="must_make_default_dialer">A zárolt telefonszámok használatához be kell állítani, hogy ez az app legyen az alapértelmezett tárcsázó.</string>
-    <string name="set_as_default">Alapértelmezés beállítása</string>
-    <string name="block_confirmation">Are you sure you want to block \"%s\"?</string>
 
     <!-- Favorites -->
     <string name="favorites">Kedvencek</string>
@@ -94,11 +63,11 @@
     <string name="extension_cannot_be_empty">A kiterjesztés nem lehet üres</string>
     <string name="source_file_doesnt_exist">A forrás fájl %s nem létezik</string>
     <string name="prepend_filenames">Fájlnevek megadása</string>
-    <string name="append_filenames">Fájlnevek hozzáadása</string>
-    <string name="simple_renaming">Egyszerű átnevezés</string>
-    <string name="pattern_renaming">Minta</string>
+    <string name="append_filenames">Fájlnevek csatolása</string>
+    <string name="simple_renaming">Simple renaming</string>
+    <string name="pattern_renaming">Pattern</string>
     <string name="string_to_add">String to add</string>
-    <string name="rename_date_time_pattern">%É - év\n%H - hónap\n%N - nap\n%ó - óra\n%p - perc\n%mp - másodperc\n%i - number increasing from 1</string>
+    <string name="rename_date_time_pattern">%É - év\\n%H - hónap\\n%N - nap\\n%ó - óra\\n%p - perc\\n%mp - másodperc</string>
 
     <!-- Copy / Move -->
     <string name="copy">Másolás</string>
@@ -173,12 +142,6 @@
         <item quantity="other">%d elem törlése</item>
     </plurals>
 
-    <!-- Are you sure you want to delete 5 contacts? -->
-    <plurals name="delete_contacts">
-        <item quantity="one">%d contact</item>
-        <item quantity="other">%d contacts</item>
-    </plurals>
-
     <!-- Storages -->
     <string name="select_storage">Válasszon tárolót</string>
     <string name="internal">Belső</string>
@@ -206,21 +169,19 @@
     <string name="camera">Kamera</string>
     <string name="exif">EXIF</string>
     <string name="song_title">Dal címe</string>
-    <string name="gps_coordinates">GPS koordináták</string>
-    <string name="altitude">Magasság</string>
+    <string name="gps_coordinates">GPS coordinates</string>
+    <string name="altitude">Altitude</string>
 
     <!-- Color customization -->
     <string name="background_color">Háttérszín</string>
     <string name="text_color">Szöveg színe</string>
     <string name="primary_color">Elsődleges szín</string>
-    <string name="accent_color_white">Accent color of white theme</string>
-    <string name="accent_color_black_and_white">Accent color of Black &amp; White theme</string>
     <string name="foreground_color">Előtér szín</string>
     <string name="app_icon_color">Alkalmazás ikon színe</string>
     <string name="bottom_navigation_bar_color">Alsó navigációs sáv színe</string>
     <string name="restore_defaults">Alapértelmezések visszaállítása</string>
-    <string name="use_default">Alapértelmezett használata</string>
-    <string name="default_color">Alapértelmezett</string>
+    <string name="use_default">Use default</string>
+    <string name="default_color">Default</string>
     <string name="change_color">Szín változtatása</string>
     <string name="theme">Téma</string>
     <string name="changing_color_description">A szín megváltoztatásával átvált az Egyéni témára</string>
@@ -232,7 +193,6 @@
     <string name="apply_to_all_apps">Színek alkalmazása az összes Simple Apps-ra</string>
     <string name="app_icon_color_warning">FIGYELMEZTETÉS: Néhány indító nem megfelelően kezeli az alkalmazás ikon testreszabását. Abban az esetben, ha az ikon eltűnik, próbálja meg elindítani az alkalmazást a Google Playen vagy egy bizonyos widgeten keresztül, ha elérhető.\nMiután elindult, állítsa vissza az alapértelmezett narancssárga ikont. #F57C00. Lehet, hogy a legrosszabb esetben újra kell telepítenie az alkalmazást.</string>
     <string name="share_colors_success">A színek sikeresen frissültek. Hozzáadott egy új témát, amelynek neve \'Megosztott\'. Kérjük, a jövőben ezt használja az összes alkalmazás színeinek frissítéséhez.</string>
-    <string name="shared_theme_note">Note that even though you are using the Pro app version, you still need Simple Thank You for technical reasons. It takes care of the color synchronization.</string>
     <string name="purchase_thank_you">
 		<![CDATA[
             Kérjük vásárolja meg a <a href="https://play.google.com/store/apps/details?id=com.simplemobiletools.thankyou">Simple Thank You</a> alkalmazást a funkció feloldásához és a fejlesztés támogatásához. Köszönöm!
@@ -244,7 +204,6 @@
     <string name="dark_theme">Sötét</string>
     <string name="solarized">Kiégetett</string>
     <string name="dark_red">Sötét és piros</string>
-    <string name="white">White</string>
     <string name="black_white">Fekete és fehér</string>
     <string name="custom">Egyéni</string>
     <string name="shared">Megosztva</string>
@@ -260,7 +219,6 @@
     <string name="share">Megosztás</string>
     <string name="share_via">Megosztva ezzel</string>
     <string name="select_all">Összes kiválasztása</string>
-    <string name="select_text">Select text</string>
     <string name="hide">Elrejtés</string>
     <string name="unhide">Elrejtés megszüntetés</string>
     <string name="hide_folder">Mappa elrejtése</string>
@@ -272,12 +230,7 @@
     <string name="undo">Visszavonás</string>
     <string name="redo">Mégis</string>
     <string name="print">Nyomtatás</string>
-    <string name="create_shortcut">Parancsikon készítése</string>
-    <string name="add_number_to_contact">Add number to contact</string>
-    <string name="view_contact_details">View contact details</string>
-    <string name="call_from_sim_1">Call from SIM 1</string>
-    <string name="call_from_sim_2">Call from SIM 2</string>
-    <string name="toggle_filename">Fájlnév láthatóság módosítása</string>
+    <string name="create_shortcut">Parancsikon létrehozása</string>
 
     <!-- Sorting -->
     <string name="sort_by">Rendezés</string>
@@ -294,12 +247,6 @@
     <string name="descending">Csökkenő</string>
     <string name="use_for_this_folder">Csak ehhez a mappához használja</string>
     <string name="sort_numeric_parts">Rendezze a numerikus részeket az aktuális értékkel</string>
-    <string name="first_name">Keresztnév</string>
-    <string name="middle_name">Középső név</string>
-    <string name="surname">Vezetéknév</string>
-    <string name="full_name">Full name</string>
-    <string name="use_custom_sorting">Use custom sorting</string>
-    <string name="change_order">Change order</string>
 
     <!-- Confirmation dialog -->
     <string name="proceed_with_deletion">Biztosan folytatja a törlést?</string>
@@ -336,15 +283,14 @@
     <string name="go_to_settings">Ugrás a Beállításokhoz</string>
     <string name="protection_setup_successfully">A jelszó beállítása sikerült. Ha elfelejteti, akkor újra kell telepíteni az alkalmazást.</string>
     <string name="fingerprint_setup_successfully">A védelem beállítása sikerült. Az újraindítással kapcsolatos problémák esetén telepítse újra az alkalmazást.</string>
-    <string name="lock_folder">Mappa zárolása</string>
-    <string name="unlock_folder">Mappa zárolás feloldása</string>
+    <string name="lock_folder">Lock folder</string>
+    <string name="unlock_folder">Unlock folder</string>
     <string name="lock_folder_notice">This protection works in this app only, it is not supposed to replace a real systemwide folder encryption.</string>
 
     <!-- Times -->
     <string name="yesterday">Tegnap</string>
     <string name="today">Ma</string>
     <string name="tomorrow">Holnap</string>
-    <string name="hide_year">Hide year</string>
     <string name="seconds_raw">másodperc</string>
     <string name="minutes_raw">perc</string>
     <string name="hours_raw">óra</string>
@@ -486,16 +432,12 @@
     <string name="your_sounds">Saját hangok</string>
     <string name="add_new_sound">Új hang hozzáadása</string>
     <string name="no_sound">Nincs hang</string>
-    <string name="during_day_at_hh_mm">During the day at hh:mm</string>
-    <string name="during_day_at">During the day at %02d:%02d</string>
 
     <!-- Settings -->
     <string name="settings">Beállítások</string>
     <string name="purchase_simple_thank_you">Simple Thank You megvásárlása</string>
     <string name="customize_colors">Színek testreszabása</string>
-    <string name="customize_colors_locked">Színek testreszabása (Locked)</string>
     <string name="customize_widget_colors">Widget színek testreszabása</string>
-    <string name="customize_notifications">Customize notifications</string>
     <string name="use_english_language">Angol nyelv használata</string>
     <string name="show_hidden_items">Mutassa a rejtett elemeket</string>
     <string name="font_size">Betűméret</string>
@@ -512,7 +454,7 @@
     <string name="skip_delete_confirmation">Mindig ugorja át a törlés megerősítése kérdést</string>
     <string name="enable_pull_to_refresh">Felülről lefelé húzásos frissítés engedélyezése</string>
     <string name="use_24_hour_time_format">24 órás idő formátum használata</string>
-    <string name="change_date_and_time_format">Dátum és idő formátum módosítása</string>
+    <string name="change_date_and_time_format">Dátum és időformátum módosítása</string>
     <string name="sunday_first">A hét kezdete vasárnap</string>
     <string name="widgets">Widgetek</string>
     <string name="use_same_snooze">Mindig ugyanazt a szundi időt használja</string>
@@ -526,8 +468,6 @@
     <string name="import_settings">Beállítások importálása</string>
     <string name="settings_exported_successfully">A beállítások exportálása sikerült</string>
     <string name="settings_imported_successfully">A beállítások importálása sikerült</string>
-    <string name="start_name_with_surname">Vezetéknév, keresztnév sorrend</string>
-    <string name="clear_cache">Clear cache</string>
 
     <!-- Setting sections -->
     <string name="visibility">Láthatóság</string>
@@ -538,15 +478,7 @@
     <string name="saving_label">Mentés</string>
     <string name="startup">Indítás</string>
     <string name="text">Szöveg</string>
-    <string name="migrating">Áttelepítés</string>
-
-    <!-- Default tabs to open -->
-    <string name="default_tab_to_open">Tab to open at app start</string>
-    <string name="contacts_tab">Contacts</string>
-    <string name="favorites_tab">Favorites</string>
-    <string name="call_history_tab">Call History</string>
-    <string name="groups_tab">Groups</string>
-    <string name="last_used_tab">Last used one</string>
+    <string name="migrating">Átköltöztetés</string>
 
     <!-- Recycle Bin -->
     <string name="restore_this_file">Fájl visszaállítása</string>
@@ -649,7 +581,6 @@
     <string name="email_label">Küldje el visszajelzését vagy javaslatait</string>
     <string name="upgrade_to_pro">Frissítés Pro verzióra</string>
     <string name="more_apps_underlined"><u>További alkalmazások</u></string>
-    <string name="more_apps_from_us_underlined"><u>More apps from us</u></string>
     <string name="third_party_licences_underlined"><u>Harmadik fél licencek</u></string>
     <string name="invite_friends_underlined"><u>Barátok meghívása</u></string>
     <string name="share_text">Gyere el %1$s - %2$s</string>
@@ -664,69 +595,28 @@
     <string name="app_version">Alkalmazás verzió: %s</string>
     <string name="device_os">Eszköz OS: %s</string>
     <string name="donate_please">
-        <![CDATA[
+		<![CDATA[
             Hello,<br><br>
             remélem tetszett az alkalmazás. Nem tartalmaz hirdetéseket. Kérem támogasd a fejlesztést a <a href="https://play.google.com/store/apps/details?id=com.simplemobiletools.thankyou">Simple Thank You</a> megvásárlásával. Utána ez a párbeszédablak sem látszik újra.<br><br>
             Köszönöm!
         ]]>
-    </string>
+	</string>
     <string name="purchase">Vásárlás</string>
     <string name="update_thank_you">Kérjük frissítse a Simple Thank You alkalmazást a legújabb verzióra</string>
     <string name="before_asking_question_read_faq">Mielőtt kérdezne, ellenőrizze az alkalmazás beállításait, és először olvassa el a Gyakran Ismételt Kérdéseket. Talán ott van a megoldás.</string>
-    <string name="before_rate_read_faq">Before you rate us, please check the app settings and read the Frequently Asked Questions first. If you have any problems, maybe the solution is there.</string>
-    <string name="make_sure_latest">Also make sure that you are using the latest app version.</string>
     <string name="read_it">Olvassa el</string>
-    <string name="read_faq">Read FAQ</string>
-    <string name="rate_us_prompt">Hello,\n\nÚgy tűnik elég régen használja ezt az alkalmazést és ezt mi igazán nagyra értékeljük.\n\nHa megkérhetjük egy szívességre, kérjük, értékeljen minket a Google Playen. Ez igazán segítene nekünk.\n\nFüggetlenül attól, hogy hogyan dönt, nem fogja látni ezt az üzenetet újra.\n\nKöszönjük!</string>
-    <string name="rate_our_app">Értékelje kérem az aplikációnkat :)</string>
-    <string name="thank_you">Köszönjük</string>
+    <string name="rate_us_prompt">Hello,\\n\\Úgy tűnik elég régen használja ezt az alkalmazést és ezt mi igazán nagyra értékeljük.\\n\\nHa megkérhetjük egy szívességre, kérjük, értékeljen minket a Google Playen. Ez igazán segítene nekünk.\\n\\nFüggetlenül attól, hogy hogyan dönt, nem fogja látni ezt az üzenetet újra.\\n\\nKöszönjük!</string>
 
     <!-- New app (do not translate anything on the 4th line) -->
     <string name="new_app">
-        <![CDATA[
+		<![CDATA[
             Szia!<br><br>
             csak tájékoztatni szeretnélek, hogy megjelent egy új alkalmazás:<br><br>
             <a href="%1$s">%2$s</a><br><br>
-            <a href="%3$s">%4$s</a><br><br>
-            <a href="%5$s">%6$s</a><br><br>
             A címre kattintva lehet letölteni.<br><br>
             Köszönöm
         ]]>
     </string>
-
-    <string name="simple_app_launcher">Simple App Launcher</string>
-    <string name="simple_calculator">Simple Calculator</string>
-    <string name="simple_calendar">Simple Calendar</string>
-    <string name="simple_camera">Simple Camera</string>
-    <string name="simple_clock">Simple Clock</string>
-    <string name="simple_contacts">Simple Contacts</string>
-    <string name="simple_dialer">Simple Dialer</string>
-    <string name="simple_draw">Simple Draw</string>
-    <string name="simple_file_manager">Simple File Manager</string>
-    <string name="simple_flashlight">Simple Flashlight</string>
-    <string name="simple_gallery">Simple Gallery</string>
-    <string name="simple_music_player">Simple Music Player</string>
-    <string name="simple_notes">Simple Notes</string>
-    <string name="simple_sms_messenger">Simple SMS Messenger</string>
-    <string name="simple_thank_you">Simple Thank You</string>
-    <string name="simple_voice_recorder">Simple Voice Recorder</string>
-
-    <string name="app_launcher_short">App Launcher</string>
-    <string name="calculator_short">Calculator</string>
-    <string name="calendar_short">Calendar</string>
-    <string name="camera_short">Camera</string>
-    <string name="clock_short">Clock</string>
-    <string name="contacts_short">Contacts</string>
-    <string name="dialer_short">Dialer</string>
-    <string name="draw_short">Draw</string>
-    <string name="file_manager_short">File Manager</string>
-    <string name="flashlight_short">Flashlight</string>
-    <string name="gallery_short">Gallery</string>
-    <string name="music_player_short">Music Player</string>
-    <string name="notes_short">Notes</string>
-    <string name="sms_messenger_short">SMS Messenger</string>
-    <string name="thank_you_short">Thank You</string>
-    <string name="voice_recorder_short">Voice Recorder</string>
 
     <string name="sideloaded_app">
         <![CDATA[
@@ -757,53 +647,6 @@
     <string name="faq_8_text_commons">As your app version is no longer updated, the bugs you have maybe spotted will never be fixed. There will also be no new functions added. You can purchase the Pro version on Google Play for a small sum of money.
         It is a one time payment, which means that once you purchase it, you will never have to pay again. Not even after getting a new device. If you won\'t like the Pro version, you can just uninstall it within a few hours and you will automatically get your money back.
         If you want a refund anytime later, just contact us at hello@simplemobiletools.com and you will get it.</string>
-    <string name="faq_9_title_commons">How can I select multiple items at once?</string>
-    <string name="faq_9_text_commons">There are multiple ways of doing that. The first one is starting the selection mode by long pressing one item, then short clicking on others to select them. The second way is similar to selecting items on PCs with a mouse,
-        just start the selection mode by long pressing one item, then with your finger still down drag it across other items for selecting. The third way of selecting multiple items is long pressing one item, then long pressing another one and everything in between gets selected. If you
-        want to select all items, just long press one item, then click at the selected item counter at the top left corner. That will select or unselect all everything.</string>
-    <string name="faq_10_title_commons">I have purchased the app, but I cannot download it on another device.</string>
-    <string name="faq_10_text_commons">Try clearing your Google Play app cache and restarting your device. It is some Google Play glitch, not really related to the app itself.</string>
-
-    <!-- Pro comparison (shown in the deprecated free apps) -->
-    <string name="why_upgrade">Get the Pro version now!</string>
-    <string name="why_upgrade_basic_version">Basic</string>
-    <string name="why_upgrade_pro_version">Pro</string>
-    <string name="why_upgrade_no_ads">No ads</string>
-    <string name="why_upgrade_no_internet_access">No internet access</string>
-    <string name="why_upgrade_footer">+ 100% Money Back Guarantee</string>
-    <string name="why_upgrade_improved_design">Improved design</string>
-
-    <!-- Gallery Pro -->
-    <string name="why_upgrade_advanced_photo_editor">Advanced photo editor</string>
-    <string name="why_upgrade_heic_support">HEIC/HEIF file support</string>
-    <string name="why_upgrade_batch_renaming">Advanced batch file renaming</string>
-    <string name="why_upgrade_folder_locking">Individual folder locking</string>
-    <string name="why_upgrade_printing_support">Printing support</string>
-
-    <!-- Calendar Pro -->
-    <string name="why_upgrade_time_zone_support">Time zone support</string>
-    <string name="why_upgrade_attendees_emails">Attendees and email reminders</string>
-    <string name="why_upgrade_easy_event_importing">Easy event importing</string>
-    <string name="why_upgrade_new_widgets">New widgets</string>
-
-    <!-- Contacts Pro -->
-    <string name="why_upgrade_duplicate_contact_merging">Improved duplicate contact merging</string>
-    <string name="why_upgrade_font_size_customization">Font size customization</string>
-    <string name="why_upgrade_private_contact_sharing">Optional private contact sharing within our apps</string>
-    <string name="why_upgrade_customizable_contact_ringtones">Customizable contact ringtones</string>
-
-    <!-- Notes Pro -->
-    <string name="why_upgrade_checklists">Checklists</string>
-    <string name="why_upgrade_different_note_per_widget">Different note and colors per widget</string>
-
-    <!-- File Manager Pro -->
-    <string name="why_upgrade_date_and_time_format">Date and time format customization</string>
-    <string name="why_upgrade_shortcuts">Home screen shortcuts</string>
-    <string name="why_upgrade_file_compression">File compression support</string>
-
-    <!-- Draw Pro -->
-    <string name="why_upgrade_background_color_customization">Background color customization</string>
-    <string name="why_upgrade_file_importing">File importing support</string>
 
     <!-- License -->
     <string name="notice">Ez az alkalmazás a következő harmadik fél könyvtárait használja az életem megkönnyítésére. Köszönöm.</string>
@@ -832,16 +675,8 @@
     <string name="sanselan_title">Apache Sanselan (kép metaadat kiolvasás)</string>
     <string name="filters_title">Android Photo Filters (kép szűrők)</string>
     <string name="gesture_views_title">Gesztus nézetek (zoomolható képek)</string>
-    <string name="indicator_fast_scroll_title">Indicator Fast Scroll (letters on scrollbar)</string>
-    <string name="event_bus_title">Event Bus (communication within the app)</string>
-    <string name="audio_record_view_title">Audio Record View (audio visualization)</string>
-    <string name="sms_mms_title">SMS MMS (SMS and MMS handling)</string>
-    <string name="apng_title">APNG Android (animated WebP support)</string>
 
     <!-- Google Play listing -->
     <string name="deprecated_app">ELAVULT: Az alkalmazás ezen verziója már nem fog frissülni, a Pro verziót a https://play.google.com/store/apps/details?id=com.simplemobiletools.xxx.pro címen találja meg.</string>
     <string name="pro_app_refund">Ne felejtse el, hogy ha 2 órán belül eltávolítja a fizetős alkalmazásunkat, akkor automatikusan visszatérítjük az árát. Ha később bármikor mégis visszatérítést szeretne, lépjen kapcsolatba velünk a hello@simplemobiletools.com címen, és visszakapja. Ez is megkönnyíti a kipróbálást :)</string>
-
-    <!-- Description of our developer profile on Google Play, it can have max 140 characters -->
-    <string name="developer_description">A group of simple, open source Android apps with customizable widgets, without ads and unnecessary permissions.</string>
 </resources>
